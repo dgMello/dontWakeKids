@@ -2,9 +2,15 @@ import SwiftUI
 
 @main
 struct DontWakeTheKidsApp: App {
+    @State private var gameStarted = false
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if gameStarted {
+                ContentView()
+            } else {
+                StartScreenView { gameStarted = true }
+            }
         }
     }
 }
