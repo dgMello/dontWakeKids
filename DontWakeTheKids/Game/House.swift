@@ -74,7 +74,7 @@ enum House {
         Furniture(x: 11, y: 1, w: 1, h: 1, label: "Sink", station: .teeth, kind: .plain, colorHex: 0x3F6A88),
         Furniture(x: 12, y: 1, w: 1, h: 2, label: "Shower", station: .shower, kind: .plain, colorHex: 0x35607E),
         Furniture(x: 1, y: 7, w: 2, h: 1, label: "", station: nil, kind: .kidBed, colorHex: 0x5A3F6E),
-        Furniture(x: 7, y: 7, w: 3, h: 1, label: "Coffee", station: .coffee, kind: .plain, colorHex: 0x5A4A3A),
+        Furniture(x: 9, y: 7, w: 2, h: 1, label: "Coffee", station: .coffee, kind: .plain, colorHex: 0x5A4A3A),
         Furniture(x: 12, y: 7, w: 1, h: 1, label: "Fridge", station: .lunch, kind: .plain, colorHex: 0x6C7186),
         Furniture(x: 9, y: 10, w: 2, h: 2, label: "Table", station: nil, kind: .plain, colorHex: 0x4D3E34),
         Furniture(x: 1, y: 11, w: 1, h: 3, label: "Couch", station: nil, kind: .plain, colorHex: 0x3A4A6A),
