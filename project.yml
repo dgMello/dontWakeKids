@@ -11,9 +11,10 @@ targets:
     sources: [DontWakeTheKids]
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.example.DontWakeTheKids
+        PRODUCT_BUNDLE_IDENTIFIER: com.dougmello.dontwakethekids
+        DEVELOPMENT_TEAM: 3GN7G883K7
         SWIFT_VERSION: "5.0"
-        MARKETING_VERSION: "0.1"
+        MARKETING_VERSION: "1.0"
         CURRENT_PROJECT_VERSION: 1
         TARGETED_DEVICE_FAMILY: "1,2"
         GENERATE_INFOPLIST_FILE: YES
