@@ -25,3 +25,22 @@ targets:
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
         INFOPLIST_KEY_UIRequiresFullScreen: YES
         INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
+  DontWakeTheKidsTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [DontWakeTheKidsTests]
+    dependencies:
+      - target: DontWakeTheKids
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.dougmello.dontwakethekids.tests
+        DEVELOPMENT_TEAM: 3GN7G883K7
+        SWIFT_VERSION: "5.0"
+        GENERATE_INFOPLIST_FILE: YES
+schemes:
+  DontWakeTheKids:
+    build:
+      targets:
+        DontWakeTheKids: all
+    test:
+      targets: [DontWakeTheKidsTests]

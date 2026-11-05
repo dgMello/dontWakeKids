@@ -29,23 +29,26 @@ enum Phase: Equatable {
 
 /// A sleeping kid with a wake meter from 0 (deep sleep) to 100 (awake).
 struct Sleeper {
-    let id: String
-    let name: String
-    let x: Double
-    let y: Double
-    let room: Room
-    let sensitivity: Double
+    let spec: SleeperSpec
     var meter: Double = 0
     var peak: Double = 0
+
+    var id: String { spec.id }
+    var name: String { spec.name }
+    var x: Double { spec.x }
+    var y: Double { spec.y }
+    var room: Room { spec.room }
+    var sensitivity: Double { spec.sensitivity }
+
+    init(_ spec: SleeperSpec) {
+        self.spec = spec
+    }
 }
 
 /// All of the game's rules. The scene draws this state; SwiftUI shows the HUD.
 @MainActor
 final class GameModel: ObservableObject {
-    // Tuning
-    static let startMinute = 30.0          // 5:30 AM
-    static let deadlineMinute = 75.0       // 6:15 AM train
-    static let gameMinutesPerSecond = 0.5  // whole morning is about 90 seconds
+    // Tuning. Per-level settings (clock, sleepers, map) live in `LevelDefinition`.
     static let walkSpeed = 5.0             // tiles per second
     static let tiptoeSpeed = 2.2
     static let meterDecayPerSecond = 3.0
@@ -53,27 +56,31 @@ final class GameModel: ObservableObject {
 
     // HUD state
     @Published private(set) var phase: Phase = .intro
-    @Published private(set) var clockText = GameModel.format(minute: GameModel.startMinute)
-    @Published private(set) var meters: [Double] = [0, 0]
+    @Published private(set) var clockText: String
+    @Published private(set) var meters: [Double]
     @Published private(set) var completed: Set<ChecklistItem> = []
     @Published private(set) var availableTasks: [MorningTask] = []
     @Published private(set) var activeTask: MorningTask?
     @Published private(set) var activeProgress: Double = 0
     @Published private(set) var toast: Toast?
     @Published var tiptoe = false
-    @Published private(set) var bestScore = UserDefaults.standard.integer(forKey: "bestScore")
+    @Published private(set) var bestScore: Int
+
+    let level: LevelDefinition
+    let progress: ProgressStore
+    /// The rule systems this level switches on.
+    let mechanics: [Mechanic]
 
     // Simulation state the scene reads every frame
-    private(set) var posX = Double(House.start.x)
-    private(set) var posY = Double(House.start.y)
-    private(set) var tile = House.start
+    private(set) var posX: Double
+    private(set) var posY: Double
+    private(set) var tile: Tile
     private(set) var path: [Tile] = []
     private(set) var pathVersion = 0
     private(set) var facing = 1.0
-    private(set) var sleepers: [Sleeper] = GameModel.freshSleepers()
-    private(set) var dogHere = true
+    private(set) var sleepers: [Sleeper]
+    private(set) var dogHere: Bool
     private(set) var dogBarkingFor = 0.0
-    private(set) var revealedCreaks: Set<Tile> = []
     private(set) var nearbyStations: [Station] = []
 
     var isBusy: Bool { busy != nil }
@@ -99,13 +106,29 @@ final class GameModel: ObservableObject {
 
     lazy var scene: HouseScene = HouseScene(model: self)
 
-    private var gameMinute: Double { Self.startMinute + elapsed * Self.gameMinutesPerSecond }
+    init(level: LevelDefinition = .classicMorning, progress: ProgressStore = .shared) {
+        self.level = level
+        self.progress = progress
+        mechanics = level.mechanics.map { $0.make() }
+        bestScore = progress.progress(for: level.id).bestScore
+        posX = Double(level.start.x)
+        posY = Double(level.start.y)
+        tile = level.start
+        sleepers = level.sleepers.map(Sleeper.init)
+        meters = level.sleepers.map { _ in 0 }
+        dogHere = level.dog != nil
+        clockText = level.clock.map { Self.format(minute: $0.startMinute) } ?? ""
+        for m in mechanics { m.reset(model: self) }
+    }
 
-    nonisolated static func freshSleepers() -> [Sleeper] {
-        [
-            Sleeper(id: "baby", name: "The baby", x: 6.5, y: 1, room: .baby, sensitivity: 1.8),
-            Sleeper(id: "maya", name: "Maya", x: 1.5, y: 7, room: .kid, sensitivity: 1.2),
-        ]
+    /// The first mechanic of a given type, if this level uses it.
+    func mechanic<M: Mechanic>(_ type: M.Type) -> M? {
+        mechanics.lazy.compactMap { $0 as? M }.first
+    }
+
+    private var gameMinute: Double {
+        guard let clock = level.clock else { return 0 }
+        return clock.startMinute + elapsed * clock.minutesPerSecond
     }
 
     nonisolated static func format(minute: Double) -> String {
@@ -115,28 +138,29 @@ final class GameModel: ObservableObject {
 
     // MARK: - Game flow
 
+    /// Starts or restarts the level.
     func start() {
-        posX = Double(House.start.x)
-        posY = Double(House.start.y)
-        tile = House.start
+        posX = Double(level.start.x)
+        posY = Double(level.start.y)
+        tile = level.start
         path = []
         pathVersion += 1
         facing = 1
-        sleepers = Self.freshSleepers()
-        dogHere = true
+        sleepers = level.sleepers.map(Sleeper.init)
+        dogHere = level.dog != nil
         dogBarkingFor = 0
         barkCooldown = 0
-        revealedCreaks = []
         elapsed = 0
         freshCoffee = false
         busy = nil
         activeTask = nil
         activeProgress = 0
         completed = []
-        meters = [0, 0]
-        clockText = Self.format(minute: Self.startMinute)
+        meters = level.sleepers.map { _ in 0 }
+        clockText = level.clock.map { Self.format(minute: $0.startMinute) } ?? ""
         toast = nil
         toastTimer = 0
+        for m in mechanics { m.reset(model: self) }
         scene.resetVisuals()
         phase = .playing
         refreshNearby()
@@ -152,8 +176,8 @@ final class GameModel: ObservableObject {
         var goals = Set<Tile>()
         if isWalkable(target) {
             goals.insert(target)
-        } else if House.station(at: target) != nil {
-            let tiles = House.furnitureIndex[target].map { House.furniture[$0].tiles } ?? [target]
+        } else if level.station(at: target) != nil {
+            let tiles = level.furnitureIndex[target].map { level.furniture[$0].tiles } ?? [target]
             for t in tiles {
                 for n in t.neighbors where isWalkable(n) { goals.insert(n) }
             }
@@ -171,8 +195,8 @@ final class GameModel: ObservableObject {
     func perform(_ task: MorningTask) {
         guard phase == .playing, busy == nil else { return }
         if task == .leave {
-            guard completed.contains(.dress) else {
-                showToast("You can't leave in pajamas", bad: true)
+            if let requirement = level.leaveRequirement, !completed.contains(requirement.item) {
+                showToast(requirement.message, bad: true)
                 return
             }
             finish(won: true, wokenID: nil)
@@ -211,10 +235,13 @@ final class GameModel: ObservableObject {
         barkCooldown -= dt
         dogBarkingFor = max(0, dogBarkingFor - dt)
 
-        if gameMinute >= Self.deadlineMinute {
+        if let clock = level.clock, gameMinute >= clock.deadlineMinute {
             finish(won: false, wokenID: nil)
             return
         }
+
+        for m in mechanics { m.update(dt, model: self) }
+        guard phase == .playing else { return }
 
         if var b = busy {
             b.elapsed += dt
@@ -234,7 +261,7 @@ final class GameModel: ObservableObject {
             busy = b
             activeProgress = min(1, b.elapsed / b.task.duration)
             if b.elapsed >= b.task.duration { completeTask() }
-        } else if let next = path.first {
+        } else if let next = path.first, mechanics.allSatisfy({ $0.canMove(model: self) }) {
             let speed = tiptoe ? Self.tiptoeSpeed : Self.walkSpeed
             let dx = Double(next.x) - posX
             let dy = Double(next.y) - posY
@@ -275,8 +302,8 @@ final class GameModel: ObservableObject {
 
     // MARK: - Rules
 
-    private func isWalkable(_ t: Tile) -> Bool {
-        House.isFloor(t) && !(dogHere && t == House.dogBed)
+    func isWalkable(_ t: Tile) -> Bool {
+        level.isFloor(t) && !(dogHere && t == level.dog?.bed)
     }
 
     private func findPath(from start: Tile, to goals: Set<Tile>) -> [Tile]? {
@@ -308,41 +335,36 @@ final class GameModel: ObservableObject {
     }
 
     /// Sound spreads to each kid, softened by distance and walls.
-    private func emit(_ amount: Double, at t: Tile) {
+    func emit(_ amount: Double, at t: Tile) {
         let x = Double(t.x)
         let y = Double(t.y)
-        let source = House.room(x: x, y: y)
+        let source = level.room(at: t)
         for i in sleepers.indices {
             let s = sleepers[i]
             let distance = hypot(x - s.x, y - s.y)
-            sleepers[i].meter += amount * House.attenuation(from: source, to: s.room) / (1 + distance * 0.12) * s.sensitivity
+            sleepers[i].meter += amount * level.attenuation(from: source, to: s.room) / (1 + distance * 0.12) * s.sensitivity
         }
     }
 
     private func stepped(onto t: Tile) {
         var noise = tiptoe ? 0.6 : 2.5
-        if House.creakyBoards.contains(t) {
-            revealedCreaks.insert(t)
-            noise = tiptoe ? 12 : 32
-            showToast(tiptoe ? "creak…" : "CREEEAK!", bad: !tiptoe)
-            onNoise?(t, noise)
-            onEvent?(tiptoe ? .softCreak : .loudCreak)
-        }
+        for m in mechanics { m.playerStepped(onto: t, noise: &noise, model: self) }
         emit(noise, at: t)
 
-        if dogHere && barkCooldown <= 0 {
-            let d = max(abs(t.x - House.dogBed.x), abs(t.y - House.dogBed.y))
+        if dogHere, barkCooldown <= 0, let bed = level.dog?.bed {
+            let d = max(abs(t.x - bed.x), abs(t.y - bed.y))
             let startled = (!tiptoe && d <= 2) || (noise >= 12 && d <= 4)
             if startled { bark() }
         }
     }
 
     private func bark() {
+        guard let dog = level.dog else { return }
         barkCooldown = 5
         dogBarkingFor = 2.5
-        emit(45, at: House.dogBed)
-        onNoise?(House.dogBed, 45)
-        showToast("Pickles barks! WOOF!", bad: true)
+        emit(45, at: dog.bed)
+        onNoise?(dog.bed, 45)
+        showToast("\(dog.name) barks! WOOF!", bad: true)
         onEvent?(.bark)
     }
 
@@ -355,7 +377,7 @@ final class GameModel: ObservableObject {
         if b.task == .grind { freshCoffee = true }
         if b.task == .dog {
             dogHere = false
-            showToast("Pickles trots outside")
+            showToast("\(level.dog?.name ?? "The dog") trots outside")
         } else {
             showToast("\(b.task.name) done")
         }
@@ -372,7 +394,7 @@ final class GameModel: ObservableObject {
     private func refreshNearby() {
         var stations: [Station] = []
         for n in tile.neighbors {
-            if let s = House.station(at: n), !stations.contains(s) { stations.append(s) }
+            if let s = level.station(at: n), !stations.contains(s) { stations.append(s) }
         }
         if !dogHere { stations.removeAll { $0 == .dog } }
         nearbyStations = stations
@@ -382,7 +404,7 @@ final class GameModel: ObservableObject {
         }
     }
 
-    private func showToast(_ text: String, bad: Bool = false) {
+    func showToast(_ text: String, bad: Bool = false) {
         toastCounter += 1
         toast = Toast(id: toastCounter, text: text, isBad: bad)
         toastTimer = 1.8
@@ -402,9 +424,9 @@ final class GameModel: ObservableObject {
         pathVersion += 1
 
         let tasksDone = completed.count
-        let minutesLeft = max(0, Int(Self.deadlineMinute - gameMinute))
+        let minutesLeft = level.clock.map { max(0, Int($0.deadlineMinute - gameMinute)) } ?? 0
         let peak = Int((sleepers.map(\.peak).max() ?? 0).rounded())
-        let total = ChecklistItem.allCases.count
+        let total = level.checklist.count
 
         var stars = 0
         var score = 0
@@ -427,23 +449,18 @@ final class GameModel: ObservableObject {
                 text += " No coffee. Brave."
             }
             stats = "Score \(score) · \(minutesLeft) min to spare · closest call \(peak)%"
-        } else if let wokenID {
-            title = wokenID == "baby" ? "The baby is up" : "Maya is up"
-            text = wokenID == "baby"
-                ? "A wail echoes down the hall. Morning over."
-                : "\u{201C}Daddy? Is it morning?\u{201D} Morning over."
+        } else if let wokenID, let spec = level.sleepers.first(where: { $0.id == wokenID }) {
+            title = spec.wokeTitle
+            text = spec.wokeText
             stats = "Tasks done: \(tasksDone) of \(total)"
         } else {
-            title = "Missed the train"
-            text = "The 6:15 pulls away without you."
+            title = level.clock?.missedTitle ?? "Out of time"
+            text = level.clock?.missedText ?? "Time ran out."
             stats = "Tasks done: \(tasksDone) of \(total)"
         }
 
-        let isNewBest = won && score > bestScore
-        if isNewBest {
-            bestScore = score
-            UserDefaults.standard.set(score, forKey: "bestScore")
-        }
+        let isNewBest = won && progress.recordWin(level.id, stars: stars, score: score)
+        if isNewBest { bestScore = score }
 
         phase = .over(GameResult(won: won, title: title, text: text, stats: stats,
                                  stars: stars, score: score, isNewBest: isNewBest))

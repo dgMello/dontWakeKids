@@ -19,23 +19,34 @@ If the project won't open, regenerate it: `brew install xcodegen && xcodegen gen
 
 | File | What it does |
 |---|---|
-| `Game/House.swift` | The map: walls, rooms, furniture, creaky boards, how sound passes between rooms |
+| `Game/LevelDefinition.swift` | What a level is: map, room map, sleepers, dog, creaky boards, clock, which mechanics are on |
+| `Game/Levels/` | One file per level, data only. `ClassicMorning.swift` is the original game |
+| `Game/Map.swift` | Basic types: tiles, rooms, stations, furniture |
 | `Game/Tasks.swift` | Checklist items and tasks: names, durations, noise per second |
-| `Game/GameModel.swift` | All the rules: movement, pathfinding, noise, wake meters, dog, scoring. Tuning constants are at the top |
-| `Game/HouseScene.swift` | SpriteKit scene. Draws the model's state each frame and turns taps into tiles |
+| `Game/GameModel.swift` | Core rules: movement, pathfinding, noise, wake meters, dog, scoring. Tuning constants are at the top |
+| `Game/Mechanics/` | One rule system per file (`Mechanic` protocol). `PressurePlates.swift` is the creaky boards |
+| `Game/Progress/ProgressStore.swift` | Saves stars, best score and unlocks per level |
+| `Game/HouseScene.swift` | SpriteKit scene. Draws any level each frame and turns taps into tiles |
+| `UI/LevelSelectView.swift` | The level list |
 | `UI/ContentView.swift` | SwiftUI screen: clock, meters, sticky note, the board, task buttons, intro/end overlays |
 | `UI/Components.swift` | Meter bars, sticky note, buttons |
 | `UI/Haptics.swift` | Haptic feedback for game events |
 | `UI/Palette.swift` | Colors and fonts |
+| `DontWakeTheKidsTests/` | Unit tests for levels, rules and saved progress. Run with **⌘U** |
+
+## Adding a level
+
+1. Add a case to `LevelID` and a file in `Game/Levels/` with a `static let` for the level.
+2. Add it to `LevelDefinition.all` in play order. It unlocks when the level before it is cleared.
+3. New rules go in a new `Mechanic` in `Game/Mechanics/`, with a `MechanicKind` case so levels can switch it on.
 
 ## Tuning
 
 Everything that changes difficulty lives in a few places:
 
 - `GameModel` constants: game speed, walk vs. tiptoe speed, how fast kids settle back down.
-- `Sleeper` sensitivity in `GameModel.freshSleepers()`: the baby is 1.8, Maya is 1.2.
+- Per level, in `Game/Levels/`: sleeper sensitivity (the baby is 1.8, Maya is 1.2), the clock, creaky boards and which rooms share walls.
 - `MorningTask.noisePerSecond` and `duration` in `Tasks.swift`.
-- `House.creakyBoards` and `House.attenuation` in `House.swift`.
 
 ## Getting to the App Store
 

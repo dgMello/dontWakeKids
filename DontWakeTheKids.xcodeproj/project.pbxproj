@@ -6,8 +6,19 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		D0A1C0DE0000000000000018 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0A1C0DE0000000000000009 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D0A1C0DE0000000000000006;
+			remoteInfo = DontWakeTheKids;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		D0A1C0DE0000000000000001 /* DontWakeTheKids.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DontWakeTheKids.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0A1C0DE0000000000000010 /* DontWakeTheKidsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DontWakeTheKidsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -16,10 +27,22 @@
 			path = DontWakeTheKids;
 			sourceTree = "<group>";
 		};
+		D0A1C0DE0000000000000011 /* DontWakeTheKidsTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = DontWakeTheKidsTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		D0A1C0DE0000000000000003 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0A1C0DE0000000000000013 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -33,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				D0A1C0DE0000000000000002 /* DontWakeTheKids */,
+				D0A1C0DE0000000000000011 /* DontWakeTheKidsTests */,
 				D0A1C0DE0000000000000005 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				D0A1C0DE0000000000000001 /* DontWakeTheKids.app */,
+				D0A1C0DE0000000000000010 /* DontWakeTheKidsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +95,29 @@
 			productReference = D0A1C0DE0000000000000001 /* DontWakeTheKids.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D0A1C0DE0000000000000015 /* DontWakeTheKidsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0A1C0DE0000000000000016 /* Build configuration list for PBXNativeTarget "DontWakeTheKidsTests" */;
+			buildPhases = (
+				D0A1C0DE0000000000000012 /* Sources */,
+				D0A1C0DE0000000000000013 /* Frameworks */,
+				D0A1C0DE0000000000000014 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D0A1C0DE0000000000000017 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				D0A1C0DE0000000000000011 /* DontWakeTheKidsTests */,
+			);
+			name = DontWakeTheKidsTests;
+			packageProductDependencies = (
+			);
+			productName = DontWakeTheKidsTests;
+			productReference = D0A1C0DE0000000000000010 /* DontWakeTheKidsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -82,6 +130,10 @@
 				TargetAttributes = {
 					D0A1C0DE0000000000000006 = {
 						CreatedOnToolsVersion = 16.0;
+					};
+					D0A1C0DE0000000000000015 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = D0A1C0DE0000000000000006;
 					};
 				};
 			};
@@ -100,12 +152,20 @@
 			projectRoot = "";
 			targets = (
 				D0A1C0DE0000000000000006 /* DontWakeTheKids */,
+				D0A1C0DE0000000000000015 /* DontWakeTheKidsTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D0A1C0DE0000000000000008 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0A1C0DE0000000000000014 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +182,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D0A1C0DE0000000000000012 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D0A1C0DE0000000000000017 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D0A1C0DE0000000000000006 /* DontWakeTheKids */;
+			targetProxy = D0A1C0DE0000000000000018 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		D0A1C0DE000000000000000C /* Debug */ = {
@@ -233,6 +308,42 @@
 			};
 			name = Release;
 		};
+		D0A1C0DE0000000000000019 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3GN7G883K7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dougmello.dontwakethekids.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DontWakeTheKids.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DontWakeTheKids";
+			};
+			name = Debug;
+		};
+		D0A1C0DE000000000000001A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3GN7G883K7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dougmello.dontwakethekids.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DontWakeTheKids.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DontWakeTheKids";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -250,6 +361,15 @@
 			buildConfigurations = (
 				D0A1C0DE000000000000000C /* Debug */,
 				D0A1C0DE000000000000000D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0A1C0DE0000000000000016 /* Build configuration list for PBXNativeTarget "DontWakeTheKidsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0A1C0DE0000000000000019 /* Debug */,
+				D0A1C0DE000000000000001A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
