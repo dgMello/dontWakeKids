@@ -53,7 +53,7 @@ struct StartScreenView: View {
 
     private var buttonStack: some View {
         VStack(spacing: 14) {
-            PrimaryButton(title: "Start My Morning", action: onPlay)
+            PrimaryButton(title: "Play", action: onPlay)
             Button("How to Play") { showRules = true }
                 .font(.subheadline.weight(.semibold))
                 .foregroundStyle(Color.muted)

@@ -1,7 +1,8 @@
 import SpriteKit
 import UIKit
 
-/// Draws the house from the model's state and turns taps into tiles.
+/// Draws a level from the model's state and turns taps into tiles.
+/// Mechanics add their own layers through `Mechanic.buildVisuals` and `syncVisuals`.
 final class HouseScene: SKScene {
     static let tileSize: CGFloat = 30
     private var T: CGFloat { Self.tileSize }
@@ -17,19 +18,19 @@ final class HouseScene: SKScene {
     private let woofLabel = SKLabelNode(fontNamed: "AvenirNext-Heavy")
     private let dogNameLabel = SKLabelNode(fontNamed: "AvenirNext-DemiBold")
     private let pathLayer = SKNode()
-    private let creakLayer = SKNode()
     private let ringLayer = SKNode()
     private var highlights: [(station: Station, node: SKShapeNode)] = []
     private var checkMarks: [(item: ChecklistItem, node: SKLabelNode)] = []
     private let darkness = SKSpriteNode()
-    private var shownCreaks: Set<Tile> = []
     private var lastPathVersion = -1
     private var lastUpdate: TimeInterval = 0
 
+    private var level: LevelDefinition { model.level }
+
     init(model: GameModel) {
         self.model = model
-        super.init(size: CGSize(width: CGFloat(House.cols) * Self.tileSize,
-                                height: CGFloat(House.rows) * Self.tileSize))
+        super.init(size: CGSize(width: CGFloat(model.level.cols) * Self.tileSize,
+                                height: CGFloat(model.level.rows) * Self.tileSize))
         scaleMode = .aspectFit
         backgroundColor = Palette.wall
         buildHouse()
@@ -43,28 +44,27 @@ final class HouseScene: SKScene {
     }
 
     /// Converts a tile coordinate (y down) to a scene point (y up), at the tile's center.
-    private func point(_ x: Double, _ y: Double) -> CGPoint {
-        CGPoint(x: (CGFloat(x) + 0.5) * T, y: (CGFloat(House.rows) - CGFloat(y) - 0.5) * T)
+    func point(_ x: Double, _ y: Double) -> CGPoint {
+        CGPoint(x: (CGFloat(x) + 0.5) * T, y: (CGFloat(level.rows) - CGFloat(y) - 0.5) * T)
     }
 
-    private func point(_ t: Tile) -> CGPoint { point(Double(t.x), Double(t.y)) }
+    func point(_ t: Tile) -> CGPoint { point(Double(t.x), Double(t.y)) }
 
+    /// Clears effects from the last attempt. Mechanics clear their own layers in `reset`.
     func resetVisuals() {
-        creakLayer.removeAllChildren()
         ringLayer.removeAllChildren()
-        shownCreaks = []
         lastPathVersion = -1
     }
 
     // MARK: - Building the house
 
     private func buildHouse() {
-        for y in 0..<House.rows {
-            for x in 0..<House.cols {
+        for y in 0..<level.rows {
+            for x in 0..<level.cols {
                 let t = Tile(x: x, y: y)
-                switch House.character(at: t) {
+                switch level.character(at: t) {
                 case ".":
-                    let floor = SKSpriteNode(color: Palette.floor(House.room(x: Double(x), y: Double(y))),
+                    let floor = SKSpriteNode(color: Palette.floor(level.room(at: t)),
                                              size: CGSize(width: T, height: T))
                     floor.position = point(t)
                     floor.zPosition = 0
@@ -83,9 +83,9 @@ final class HouseScene: SKScene {
                     let knob = SKShapeNode(circleOfRadius: 2.5)
                     knob.fillColor = Palette.amber
                     knob.strokeColor = .clear
-                    knob.position = CGPoint(x: House.character(at: t) == "F" ? 6 : -6, y: 0)
+                    knob.position = CGPoint(x: level.character(at: t) == "F" ? 6 : -6, y: 0)
                     door.addChild(knob)
-                    addHighlight(for: House.character(at: t) == "F" ? .leave : .dog,
+                    addHighlight(for: level.character(at: t) == "F" ? .leave : .dog,
                                  size: CGSize(width: T - 6, height: T - 6), at: point(t))
                 default:
                     break
@@ -93,7 +93,7 @@ final class HouseScene: SKScene {
             }
         }
 
-        for label in House.roomLabels {
+        for label in level.roomLabels {
             let node = SKLabelNode(fontNamed: "ChalkboardSE-Regular")
             node.text = label.text
             node.fontSize = 13
@@ -104,7 +104,7 @@ final class HouseScene: SKScene {
             addChild(node)
         }
 
-        for f in House.furniture {
+        for f in level.furniture {
             let size = CGSize(width: CGFloat(f.w) * T - 6, height: CGFloat(f.h) * T - 6)
             let center = point(Double(f.x) + Double(f.w) / 2 - 0.5, Double(f.y) + Double(f.h) / 2 - 0.5)
             let shape = SKShapeNode(rectOf: size, cornerRadius: 5)
@@ -152,9 +152,6 @@ final class HouseScene: SKScene {
             }
         }
 
-        creakLayer.zPosition = 2
-        addChild(creakLayer)
-
         for sleeper in model.sleepers {
             let base = point(sleeper.x, sleeper.y)
             let blanket = SKShapeNode(rectOf: CGSize(width: T * 1.1, height: 16), cornerRadius: 6)
@@ -190,6 +187,8 @@ final class HouseScene: SKScene {
         darkness.size = CGSize(width: size.width * 2, height: size.height * 2)
         darkness.zPosition = 50
         addChild(darkness)
+
+        for m in model.mechanics { m.buildVisuals(in: self) }
     }
 
     private func addHighlight(for station: Station, size: CGSize, at center: CGPoint) {
@@ -205,7 +204,8 @@ final class HouseScene: SKScene {
     }
 
     private func buildDog() {
-        dogNode.position = point(House.dogBed)
+        guard let dog = level.dog else { return }
+        dogNode.position = point(dog.bed)
         dogNode.zPosition = 5
         let bed = SKShapeNode(ellipseOf: CGSize(width: 26, height: 20))
         bed.fillColor = UIColor(hex: 0x5C4A6E)
@@ -230,7 +230,7 @@ final class HouseScene: SKScene {
         woofLabel.position = CGPoint(x: 0, y: 14)
         woofLabel.isHidden = true
         dogNode.addChild(woofLabel)
-        dogNameLabel.text = "Pickles"
+        dogNameLabel.text = dog.name
         dogNameLabel.fontSize = 9
         dogNameLabel.fontColor = UIColor(hex: 0xA0BEFF, alpha: 0.7)
         dogNameLabel.position = CGPoint(x: 0, y: -22)
@@ -362,19 +362,7 @@ final class HouseScene: SKScene {
             c.node.isHidden = !model.completed.contains(c.item)
         }
 
-        for t in model.revealedCreaks where !shownCreaks.contains(t) {
-            shownCreaks.insert(t)
-            let crack = CGMutablePath()
-            crack.move(to: CGPoint(x: -8, y: 6))
-            crack.addLine(to: CGPoint(x: -1, y: 0))
-            crack.addLine(to: CGPoint(x: -4, y: -4))
-            crack.addLine(to: CGPoint(x: 7, y: -8))
-            let mark = SKShapeNode(path: crack)
-            mark.strokeColor = Palette.danger.withAlphaComponent(0.75)
-            mark.lineWidth = 2
-            mark.position = point(t)
-            creakLayer.addChild(mark)
-        }
+        for m in model.mechanics { m.syncVisuals(in: self, time: time) }
     }
 
     // MARK: - Input
@@ -383,7 +371,7 @@ final class HouseScene: SKScene {
         guard let touch = touches.first else { return }
         let location = touch.location(in: self)
         let x = Int(floor(location.x / T))
-        let y = House.rows - 1 - Int(floor(location.y / T))
+        let y = level.rows - 1 - Int(floor(location.y / T))
         model.tap(Tile(x: x, y: y))
     }
 }

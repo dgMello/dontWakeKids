@@ -37,11 +37,12 @@ struct MeterView: View {
 
 /// The yellow sticky note on the fridge, in Dad's handwriting.
 struct ChecklistNote: View {
+    var items: [ChecklistItem] = ChecklistItem.allCases
     let completed: Set<ChecklistItem>
 
     var body: some View {
         LazyVGrid(columns: Array(repeating: GridItem(.flexible(), alignment: .leading), count: 3), alignment: .leading, spacing: 2) {
-            ForEach(ChecklistItem.allCases) { item in
+            ForEach(items) { item in
                 let isDone = completed.contains(item)
                 Text((isDone ? "✓ " : "☐ ") + item.label)
                     .font(Fonts.hand(15))

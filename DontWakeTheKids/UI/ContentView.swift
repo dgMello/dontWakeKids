@@ -3,7 +3,13 @@ import UIKit
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var model = GameModel()
+    @StateObject private var model: GameModel
+    private let onExit: () -> Void
+
+    init(level: LevelDefinition = .classicMorning, onExit: @escaping () -> Void = {}) {
+        _model = StateObject(wrappedValue: GameModel(level: level))
+        self.onExit = onExit
+    }
 
     var body: some View {
         ZStack {
@@ -11,10 +17,13 @@ struct ContentView: View {
             VStack(spacing: 10) {
                 header
                 HStack(spacing: 12) {
-                    MeterView(name: "Baby", value: model.meters[0])
-                    MeterView(name: "Maya, 8", value: model.meters[1])
+                    ForEach(Array(model.level.sleepers.enumerated()), id: \.element.id) { i, sleeper in
+                        MeterView(name: sleeper.meterLabel, value: i < model.meters.count ? model.meters[i] : 0)
+                    }
                 }
-                ChecklistNote(completed: model.completed)
+                if !model.level.checklist.isEmpty {
+                    ChecklistNote(items: model.level.checklist, completed: model.completed)
+                }
                 board
                 controls
             }
@@ -29,29 +38,38 @@ struct ContentView: View {
     }
 
     private var header: some View {
-        HStack(alignment: .firstTextBaseline) {
-            Text("Don't Wake the Kids")
+        HStack(alignment: .center) {
+            Button(action: onExit) {
+                Image(systemName: "chevron.left")
+                    .font(.body.weight(.heavy))
+                    .foregroundStyle(Color.muted)
+                    .frame(width: 32, height: 44)
+            }
+            .accessibilityLabel("Levels")
+            Text(model.level.title)
                 .font(Fonts.hand(26, bold: true))
                 .foregroundStyle(Color.ink)
                 .lineLimit(1)
                 .minimumScaleFactor(0.7)
             Spacer(minLength: 8)
-            VStack(alignment: .trailing, spacing: 0) {
-                Text("TRAIN AT 6:15")
-                    .font(.caption2.weight(.semibold))
-                    .tracking(0.8)
-                    .foregroundStyle(Color.muted)
-                Text(model.clockText)
-                    .font(.system(.title3, design: .rounded).weight(.heavy))
-                    .monospacedDigit()
-                    .foregroundStyle(Color.amber)
+            if let clock = model.level.clock {
+                VStack(alignment: .trailing, spacing: 0) {
+                    Text(clock.deadlineLabel)
+                        .font(.caption2.weight(.semibold))
+                        .tracking(0.8)
+                        .foregroundStyle(Color.muted)
+                    Text(model.clockText)
+                        .font(.system(.title3, design: .rounded).weight(.heavy))
+                        .monospacedDigit()
+                        .foregroundStyle(Color.amber)
+                }
             }
         }
     }
 
     private var board: some View {
         SpriteView(scene: model.scene, preferredFramesPerSecond: 60)
-            .aspectRatio(CGFloat(House.cols) / CGFloat(House.rows), contentMode: .fit)
+            .aspectRatio(CGFloat(model.level.cols) / CGFloat(model.level.rows), contentMode: .fit)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.line, lineWidth: 1))
             .overlay(alignment: .top) { toastView }
@@ -80,15 +98,15 @@ struct ContentView: View {
         switch model.phase {
         case .intro:
             OverlayCard {
-                Text("5:30 AM. Shhh.")
+                Text(model.level.intro.title)
                     .font(Fonts.hand(34, bold: true))
                     .foregroundStyle(Color.amber)
-                Text("Get through your morning and out the front door by 6:15 without waking the baby or Maya.")
+                Text(model.level.intro.text)
                     .foregroundStyle(Color.ink)
-                Text("Tap the floor to walk. Stand next to the closet, sink, shower, coffee, fridge or back door to do a task. Tiptoe is quiet but slow. Some floorboards creak, and Pickles the dog barks if you stomp past.")
+                Text(model.level.intro.hint)
                     .font(.footnote)
                     .foregroundStyle(Color.muted)
-                PrimaryButton(title: "Start my morning") { model.start() }
+                PrimaryButton(title: model.level.intro.startButton) { model.start() }
             }
         case .playing:
             EmptyView()
@@ -117,6 +135,10 @@ struct ContentView: View {
                         .foregroundStyle(Color.muted)
                 }
                 PrimaryButton(title: "Try again") { model.start() }
+                Button("Back to levels", action: onExit)
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(Color.muted)
+                    .frame(minHeight: 44)
             }
         }
     }

@@ -113,6 +113,20 @@ There is no test target yet. Add `DontWakeTheKidsTests` (in `project.yml` too) a
 
 **Phase 0 done when:** today's game plays exactly the same, but it loads from `LevelDefinition.morning`, creaks run through `PressurePlateSystem`, and a level select screen shows one card.
 
+### 2.6 Phase 0 status: built
+
+Decisions taken: L3 prototyped alone with a top-down fallback; L2 uses a "parent watching" meter; every level fits one screen; today's game stays as **Classic Morning**.
+
+What was built, and where it differs from the sketch above:
+
+- The level is `LevelDefinition.classicMorning` (in `Game/Levels/ClassicMorning.swift`), not `.morning`.
+- Rooms come from a `roomLayout` grid of letters. A test checks it matches the old hard-coded rules tile by tile.
+- `Mechanic` has `reset`, `update`, `playerStepped(onto:noise:)`, `canMove`, `buildVisuals` and `syncVisuals`. Mechanics own their scene layers, so the scene knows nothing about creaks any more.
+- Instead of `GameModel.load(level:)`, each level gets a fresh `GameModel` (the screen is rebuilt per level). Simpler, and no leftover state between levels.
+- `Objective`, `collectibles` and `StarRules` are not in `LevelDefinition` yet. They arrive with the first level that needs them (L1), so they're shaped by a real use.
+- `ProgressStore` carries over the old single best score into Classic Morning.
+- The start screen's button now says **Play** and opens the level list.
+
 ---
 
 ## 3. The levels
