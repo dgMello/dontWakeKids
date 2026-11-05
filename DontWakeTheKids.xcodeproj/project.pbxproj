@@ -6,375 +6,541 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		154C05D8A9588BD24950FC4B /* LevelDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4101EB3D95D9F0A30DD7D293 /* LevelDefinition.swift */; };
+		27B5F88D893F461FD025624E /* LevelSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF0E15DFA058BED463DA45F /* LevelSelectView.swift */; };
+		2DA8FB1EA4F6DCCFEE96DC5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E40362D7D111EA3682E791F2 /* Assets.xcassets */; };
+		46D6F5BE14099AC53C642ABC /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BADEE0403CE92C9B05A93C /* Haptics.swift */; };
+		4B22BAB0C587A7453C95B543 /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D6CC1958967148FA7F26EF /* RulesView.swift */; };
+		4D192979ECE7490EB5A51624 /* DontWakeTheKidsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D51D5E0EB05FBAB31FD771 /* DontWakeTheKidsApp.swift */; };
+		59FD45CCE2BAE97565010E72 /* GameModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CACC0AE36DF36E2F0578A /* GameModelTests.swift */; };
+		6658AE2CD26F96DAE07646D6 /* ProgressStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FA558C21DA1E902EDB9DFC /* ProgressStoreTests.swift */; };
+		6996B5061A7A803BAD965B67 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79E868DFA409FB4794C9972 /* Map.swift */; };
+		6CF4C5AB80CCEECAF6C777C4 /* LevelDefinitionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAA4E1A60470AEF3D4484D8 /* LevelDefinitionTests.swift */; };
+		7163D43E76CA3AB4159558D8 /* PressurePlates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1052D5ACDEB5905AF598E5F /* PressurePlates.swift */; };
+		77851EAE6CEAC7DDB901C873 /* StartScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC8848ED697CAFB53BE513F /* StartScreenView.swift */; };
+		8DD94315C3C7A0DD989F05A1 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D841758ACCA6BE70E41197 /* Components.swift */; };
+		8DF7012CD63D678A3A84C2E0 /* ProgressStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C5E063EF07DF1A2B140E19 /* ProgressStore.swift */; };
+		A2C8E347FF0A072C2A4F90DE /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EAF96F2DA59374EBD1ACFC /* Palette.swift */; };
+		A8BE560C4CF8C625FD73B65E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ACFB3540202A50C38C99BA /* ContentView.swift */; };
+		B8BDBF7E5C9196D48D2429C4 /* Mechanic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B07063ADCE8A8746C43F23 /* Mechanic.swift */; };
+		D02B8CEAA71CA40CE5301E3D /* HouseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58150BFF5E180CAEA235C37C /* HouseScene.swift */; };
+		D2B044131AEDE47E8157F342 /* ClassicMorning.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33DAA6EBA6DE70F8C0FEBE6 /* ClassicMorning.swift */; };
+		E78D44798421751A52A6968B /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DEAA772A7429BF3E77EC38 /* GameModel.swift */; };
+		F66CA9D4CF55677AB9C034C6 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52B4FD6C6B9D76DF42A5915 /* Tasks.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
-		D0A1C0DE0000000000000018 /* PBXContainerItemProxy */ = {
+		4611DE0BA2577A6751EE4C26 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D0A1C0DE0000000000000009 /* Project object */;
+			containerPortal = 391D3A830065D9D20326677A /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D0A1C0DE0000000000000006;
+			remoteGlobalIDString = BD04F9DFE9310594266DCE5D;
 			remoteInfo = DontWakeTheKids;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D0A1C0DE0000000000000001 /* DontWakeTheKids.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DontWakeTheKids.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D0A1C0DE0000000000000010 /* DontWakeTheKidsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DontWakeTheKidsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00DEAA772A7429BF3E77EC38 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		13D6CC1958967148FA7F26EF /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
+		19C5E063EF07DF1A2B140E19 /* ProgressStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressStore.swift; sourceTree = "<group>"; };
+		1FF0E15DFA058BED463DA45F /* LevelSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSelectView.swift; sourceTree = "<group>"; };
+		2D2BD9C04000859BFC8F6495 /* DontWakeTheKids.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = DontWakeTheKids.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		38ACFB3540202A50C38C99BA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		40D51D5E0EB05FBAB31FD771 /* DontWakeTheKidsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DontWakeTheKidsApp.swift; sourceTree = "<group>"; };
+		4101EB3D95D9F0A30DD7D293 /* LevelDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDefinition.swift; sourceTree = "<group>"; };
+		4CD7F26A848B0DE27AA4F69F /* DontWakeTheKidsTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = DontWakeTheKidsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		58150BFF5E180CAEA235C37C /* HouseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseScene.swift; sourceTree = "<group>"; };
+		72EAF96F2DA59374EBD1ACFC /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
+		82FA558C21DA1E902EDB9DFC /* ProgressStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressStoreTests.swift; sourceTree = "<group>"; };
+		9CAA4E1A60470AEF3D4484D8 /* LevelDefinitionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDefinitionTests.swift; sourceTree = "<group>"; };
+		A1052D5ACDEB5905AF598E5F /* PressurePlates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressurePlates.swift; sourceTree = "<group>"; };
+		A3B07063ADCE8A8746C43F23 /* Mechanic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mechanic.swift; sourceTree = "<group>"; };
+		A79E868DFA409FB4794C9972 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		B3BADEE0403CE92C9B05A93C /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
+		C0D841758ACCA6BE70E41197 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		C33DAA6EBA6DE70F8C0FEBE6 /* ClassicMorning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicMorning.swift; sourceTree = "<group>"; };
+		CA6CACC0AE36DF36E2F0578A /* GameModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModelTests.swift; sourceTree = "<group>"; };
+		E40362D7D111EA3682E791F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E52B4FD6C6B9D76DF42A5915 /* Tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
+		FFC8848ED697CAFB53BE513F /* StartScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		D0A1C0DE0000000000000002 /* DontWakeTheKids */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = DontWakeTheKids;
+/* Begin PBXGroup section */
+		003F1DDD5145538268E0152C = {
+			isa = PBXGroup;
+			children = (
+				8FF714E99008A233DA116990 /* DontWakeTheKids */,
+				1D9DFBEF9301175DF9E248AB /* DontWakeTheKidsTests */,
+				9DDC2431DE13526105936A9C /* Products */,
+			);
 			sourceTree = "<group>";
 		};
-		D0A1C0DE0000000000000011 /* DontWakeTheKidsTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
+		018272144CCF0D64D4F03F10 /* Mechanics */ = {
+			isa = PBXGroup;
+			children = (
+				A3B07063ADCE8A8746C43F23 /* Mechanic.swift */,
+				A1052D5ACDEB5905AF598E5F /* PressurePlates.swift */,
+			);
+			path = Mechanics;
+			sourceTree = "<group>";
+		};
+		0E07B74EE25101BB391747ED /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				C33DAA6EBA6DE70F8C0FEBE6 /* ClassicMorning.swift */,
+			);
+			path = Levels;
+			sourceTree = "<group>";
+		};
+		111BBB6248CB42AA17179128 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				40D51D5E0EB05FBAB31FD771 /* DontWakeTheKidsApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		1D9DFBEF9301175DF9E248AB /* DontWakeTheKidsTests */ = {
+			isa = PBXGroup;
+			children = (
+				CA6CACC0AE36DF36E2F0578A /* GameModelTests.swift */,
+				9CAA4E1A60470AEF3D4484D8 /* LevelDefinitionTests.swift */,
+				82FA558C21DA1E902EDB9DFC /* ProgressStoreTests.swift */,
+			);
 			path = DontWakeTheKidsTests;
 			sourceTree = "<group>";
 		};
-/* End PBXFileSystemSynchronizedRootGroup section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		D0A1C0DE0000000000000003 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D0A1C0DE0000000000000013 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		D0A1C0DE0000000000000004 = {
+		8FF714E99008A233DA116990 /* DontWakeTheKids */ = {
 			isa = PBXGroup;
 			children = (
-				D0A1C0DE0000000000000002 /* DontWakeTheKids */,
-				D0A1C0DE0000000000000011 /* DontWakeTheKidsTests */,
-				D0A1C0DE0000000000000005 /* Products */,
+				E40362D7D111EA3682E791F2 /* Assets.xcassets */,
+				111BBB6248CB42AA17179128 /* App */,
+				B330CAFCF263379A83DE1653 /* Game */,
+				DE2B7F99DD0A02438A817DC7 /* UI */,
 			);
+			path = DontWakeTheKids;
 			sourceTree = "<group>";
 		};
-		D0A1C0DE0000000000000005 /* Products */ = {
+		9DDC2431DE13526105936A9C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D0A1C0DE0000000000000001 /* DontWakeTheKids.app */,
-				D0A1C0DE0000000000000010 /* DontWakeTheKidsTests.xctest */,
+				2D2BD9C04000859BFC8F6495 /* DontWakeTheKids.app */,
+				4CD7F26A848B0DE27AA4F69F /* DontWakeTheKidsTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		B330CAFCF263379A83DE1653 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				00DEAA772A7429BF3E77EC38 /* GameModel.swift */,
+				58150BFF5E180CAEA235C37C /* HouseScene.swift */,
+				4101EB3D95D9F0A30DD7D293 /* LevelDefinition.swift */,
+				A79E868DFA409FB4794C9972 /* Map.swift */,
+				E52B4FD6C6B9D76DF42A5915 /* Tasks.swift */,
+				0E07B74EE25101BB391747ED /* Levels */,
+				018272144CCF0D64D4F03F10 /* Mechanics */,
+				CA20D585D08CD29046DF7C80 /* Progress */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		CA20D585D08CD29046DF7C80 /* Progress */ = {
+			isa = PBXGroup;
+			children = (
+				19C5E063EF07DF1A2B140E19 /* ProgressStore.swift */,
+			);
+			path = Progress;
+			sourceTree = "<group>";
+		};
+		DE2B7F99DD0A02438A817DC7 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				C0D841758ACCA6BE70E41197 /* Components.swift */,
+				38ACFB3540202A50C38C99BA /* ContentView.swift */,
+				B3BADEE0403CE92C9B05A93C /* Haptics.swift */,
+				1FF0E15DFA058BED463DA45F /* LevelSelectView.swift */,
+				72EAF96F2DA59374EBD1ACFC /* Palette.swift */,
+				13D6CC1958967148FA7F26EF /* RulesView.swift */,
+				FFC8848ED697CAFB53BE513F /* StartScreenView.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D0A1C0DE0000000000000006 /* DontWakeTheKids */ = {
+		287EE3D0E680348FA2C69E49 /* DontWakeTheKidsTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D0A1C0DE000000000000000A /* Build configuration list for PBXNativeTarget "DontWakeTheKids" */;
+			buildConfigurationList = EA852442FCC8F16405645279 /* Build configuration list for PBXNativeTarget "DontWakeTheKidsTests" */;
 			buildPhases = (
-				D0A1C0DE0000000000000007 /* Sources */,
-				D0A1C0DE0000000000000003 /* Frameworks */,
-				D0A1C0DE0000000000000008 /* Resources */,
+				6DE5EB114F223B2CE425EDF8 /* Sources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				D0A1C0DE0000000000000002 /* DontWakeTheKids */,
-			);
-			name = DontWakeTheKids;
-			packageProductDependencies = (
-			);
-			productName = DontWakeTheKids;
-			productReference = D0A1C0DE0000000000000001 /* DontWakeTheKids.app */;
-			productType = "com.apple.product-type.application";
-		};
-		D0A1C0DE0000000000000015 /* DontWakeTheKidsTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D0A1C0DE0000000000000016 /* Build configuration list for PBXNativeTarget "DontWakeTheKidsTests" */;
-			buildPhases = (
-				D0A1C0DE0000000000000012 /* Sources */,
-				D0A1C0DE0000000000000013 /* Frameworks */,
-				D0A1C0DE0000000000000014 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D0A1C0DE0000000000000017 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				D0A1C0DE0000000000000011 /* DontWakeTheKidsTests */,
+				A4321B8DF833CAEC8844CA74 /* PBXTargetDependency */,
 			);
 			name = DontWakeTheKidsTests;
 			packageProductDependencies = (
 			);
 			productName = DontWakeTheKidsTests;
-			productReference = D0A1C0DE0000000000000010 /* DontWakeTheKidsTests.xctest */;
+			productReference = 4CD7F26A848B0DE27AA4F69F /* DontWakeTheKidsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BD04F9DFE9310594266DCE5D /* DontWakeTheKids */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D037CA54DAD5FDDC9528643A /* Build configuration list for PBXNativeTarget "DontWakeTheKids" */;
+			buildPhases = (
+				2FB498F84A67EE89E5A1EBEF /* Sources */,
+				F60A07E1DC2681B76DE2A002 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DontWakeTheKids;
+			packageProductDependencies = (
+			);
+			productName = DontWakeTheKids;
+			productReference = 2D2BD9C04000859BFC8F6495 /* DontWakeTheKids.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D0A1C0DE0000000000000009 /* Project object */ = {
+		391D3A830065D9D20326677A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1600;
-				LastUpgradeCheck = 1600;
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
-					D0A1C0DE0000000000000006 = {
-						CreatedOnToolsVersion = 16.0;
+					287EE3D0E680348FA2C69E49 = {
+						DevelopmentTeam = 3GN7G883K7;
 					};
-					D0A1C0DE0000000000000015 = {
-						CreatedOnToolsVersion = 16.0;
-						TestTargetID = D0A1C0DE0000000000000006;
+					BD04F9DFE9310594266DCE5D = {
+						DevelopmentTeam = 3GN7G883K7;
 					};
 				};
 			};
-			buildConfigurationList = D0A1C0DE000000000000000B /* Build configuration list for PBXProject "DontWakeTheKids" */;
+			buildConfigurationList = F5D17256B7C2CF9F931E9A36 /* Build configuration list for PBXProject "DontWakeTheKids" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				en,
 			);
-			mainGroup = D0A1C0DE0000000000000004;
+			mainGroup = 003F1DDD5145538268E0152C;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = D0A1C0DE0000000000000005 /* Products */;
+			productRefGroup = 9DDC2431DE13526105936A9C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D0A1C0DE0000000000000006 /* DontWakeTheKids */,
-				D0A1C0DE0000000000000015 /* DontWakeTheKidsTests */,
+				BD04F9DFE9310594266DCE5D /* DontWakeTheKids */,
+				287EE3D0E680348FA2C69E49 /* DontWakeTheKidsTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		D0A1C0DE0000000000000008 /* Resources */ = {
+		F60A07E1DC2681B76DE2A002 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D0A1C0DE0000000000000014 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				2DA8FB1EA4F6DCCFEE96DC5B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		D0A1C0DE0000000000000007 /* Sources */ = {
+		2FB498F84A67EE89E5A1EBEF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2B044131AEDE47E8157F342 /* ClassicMorning.swift in Sources */,
+				8DD94315C3C7A0DD989F05A1 /* Components.swift in Sources */,
+				A8BE560C4CF8C625FD73B65E /* ContentView.swift in Sources */,
+				4D192979ECE7490EB5A51624 /* DontWakeTheKidsApp.swift in Sources */,
+				E78D44798421751A52A6968B /* GameModel.swift in Sources */,
+				46D6F5BE14099AC53C642ABC /* Haptics.swift in Sources */,
+				D02B8CEAA71CA40CE5301E3D /* HouseScene.swift in Sources */,
+				154C05D8A9588BD24950FC4B /* LevelDefinition.swift in Sources */,
+				27B5F88D893F461FD025624E /* LevelSelectView.swift in Sources */,
+				6996B5061A7A803BAD965B67 /* Map.swift in Sources */,
+				B8BDBF7E5C9196D48D2429C4 /* Mechanic.swift in Sources */,
+				A2C8E347FF0A072C2A4F90DE /* Palette.swift in Sources */,
+				7163D43E76CA3AB4159558D8 /* PressurePlates.swift in Sources */,
+				8DF7012CD63D678A3A84C2E0 /* ProgressStore.swift in Sources */,
+				4B22BAB0C587A7453C95B543 /* RulesView.swift in Sources */,
+				77851EAE6CEAC7DDB901C873 /* StartScreenView.swift in Sources */,
+				F66CA9D4CF55677AB9C034C6 /* Tasks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D0A1C0DE0000000000000012 /* Sources */ = {
+		6DE5EB114F223B2CE425EDF8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59FD45CCE2BAE97565010E72 /* GameModelTests.swift in Sources */,
+				6CF4C5AB80CCEECAF6C777C4 /* LevelDefinitionTests.swift in Sources */,
+				6658AE2CD26F96DAE07646D6 /* ProgressStoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D0A1C0DE0000000000000017 /* PBXTargetDependency */ = {
+		A4321B8DF833CAEC8844CA74 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D0A1C0DE0000000000000006 /* DontWakeTheKids */;
-			targetProxy = D0A1C0DE0000000000000018 /* PBXContainerItemProxy */;
+			target = BD04F9DFE9310594266DCE5D /* DontWakeTheKids */;
+			targetProxy = 4611DE0BA2577A6751EE4C26 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		D0A1C0DE000000000000000C /* Debug */ = {
+		6E1F3B857B1960EFAB197D03 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
 					"$(inherited)",
+					"DEBUG=1",
 				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		D0A1C0DE000000000000000D /* Release */ = {
+		8F5CC9FBAA16A37EDE4304CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3GN7G883K7;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Don't Wake";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.casual-games";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dougmello.dontwakethekids;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		A022AF50ACE3760694D49EBD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				VALIDATE_PRODUCT = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
-		D0A1C0DE000000000000000E /* Debug */ = {
+		EAB394C7EB91CC808D53CC81 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 3GN7G883K7;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dougmello.dontwakethekids.tests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DontWakeTheKids.app/DontWakeTheKids";
+			};
+			name = Release;
+		};
+		F24606BB26BF33D18E75576D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3GN7G883K7;
-				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Don't Wake";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.casual-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dougmello.dontwakethekids;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
+				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
-			name = Debug;
+			name = Release;
 		};
-		D0A1C0DE000000000000000F /* Release */ = {
+		F2CA58CCFD00096346D06C67 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 3GN7G883K7;
-				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Don't Wake";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.casual-games";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UIRequiresFullScreen = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dougmello.dontwakethekids;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		D0A1C0DE0000000000000019 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3GN7G883K7;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dougmello.dontwakethekids.tests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
+				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DontWakeTheKids.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DontWakeTheKids";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DontWakeTheKids.app/DontWakeTheKids";
 			};
 			name = Debug;
-		};
-		D0A1C0DE000000000000001A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3GN7G883K7;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dougmello.dontwakethekids.tests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DontWakeTheKids.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DontWakeTheKids";
-			};
-			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D0A1C0DE000000000000000A /* Build configuration list for PBXNativeTarget "DontWakeTheKids" */ = {
+		D037CA54DAD5FDDC9528643A /* Build configuration list for PBXNativeTarget "DontWakeTheKids" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D0A1C0DE000000000000000E /* Debug */,
-				D0A1C0DE000000000000000F /* Release */,
+				8F5CC9FBAA16A37EDE4304CE /* Debug */,
+				F24606BB26BF33D18E75576D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
-		D0A1C0DE000000000000000B /* Build configuration list for PBXProject "DontWakeTheKids" */ = {
+		EA852442FCC8F16405645279 /* Build configuration list for PBXNativeTarget "DontWakeTheKidsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D0A1C0DE000000000000000C /* Debug */,
-				D0A1C0DE000000000000000D /* Release */,
+				F2CA58CCFD00096346D06C67 /* Debug */,
+				EAB394C7EB91CC808D53CC81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
-		D0A1C0DE0000000000000016 /* Build configuration list for PBXNativeTarget "DontWakeTheKidsTests" */ = {
+		F5D17256B7C2CF9F931E9A36 /* Build configuration list for PBXProject "DontWakeTheKids" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D0A1C0DE0000000000000019 /* Debug */,
-				D0A1C0DE000000000000001A /* Release */,
+				6E1F3B857B1960EFAB197D03 /* Debug */,
+				A022AF50ACE3760694D49EBD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = D0A1C0DE0000000000000009 /* Project object */;
+	rootObject = 391D3A830065D9D20326677A /* Project object */;
 }
