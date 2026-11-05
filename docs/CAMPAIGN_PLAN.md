@@ -1,11 +1,45 @@
-# Campaign Plan: 8 Levels
+# Campaign Plan: 8 Levels + a Bonus
 
-This plan turns *Don't Wake the Kids* from one morning into an 8-level campaign. Each level teaches one new mechanic. The finale uses all of them.
+This plan turns *Don't Wake the Kids* from one morning into an 8-level campaign, plus a bonus level. Each level teaches one new mechanic. The finale uses all of them.
 
 It builds on the game we already have. Today's game is a single level: a full morning routine with creaky boards, a noise system, two sleepers and a dog. That is most of the finale (Level 8). So the work is:
 
 1. Turn the hard-coded house into level data.
 2. Add one new mechanic per level.
+
+---
+
+## 0. Homage, not copy
+
+Every level riffs on a film genre and one famous kind of scene. None of them copies a film. The joke is the scale shift: a big-screen moment played out with household things at 5:30 AM.
+
+**Never use:**
+- character names, faces or look-alikes, or signature outfits (no hat-and-whip adventurer, no tuxedo spy)
+- dialogue, catchphrases or famous lines
+- film music, or music that sounds like it
+- logos, title fonts or posters
+- recreated sets, shots or famous props (no golden idol, no staff with a headpiece, no miniature city model)
+- a film's exact title (puns are fine)
+
+**Always:**
+- **Swap the props for household ones.** A stuffed bunny, not an idol. A suncatcher, not a staff.
+- **Change the stakes and the ending.** Every scene ends in a parenting joke, not the film's ending.
+- **Use our own art style.** A "temple" is pillows, blankets and nightlight glow, not a stone tomb.
+- **Use original music and sounds.**
+
+**The check:** every level design lists what it riffs on and what makes it ours. If the "ours" column is thin, redesign it.
+
+| Level | Riffs on | What makes it ours |
+|---|---|---|
+| L1 Raiders of the Lost Nap | Temple adventure: a treasure swap, a trap-filled floor, a chase | A stuffed bunny and a rolled-towel decoy; a cracked bedroom door for light; toys on the floor; a toddler's ball rolling down the hall |
+| Bonus: The Sunbeam | Adventure: light through an object reveals a hidden spot | A toddler's crayon "treasure map", a suncatcher, window blinds, car keys in the toy box, a kid asleep on the couch |
+| L2 The Cookie Job | Heist: dodging a sweeping camera | A baby monitor, a cookie jar, a step stool; the "guard" is a half-asleep parent |
+| L3 Mission: Coffee | Spy: lowered from the ceiling on a wire | Belts tied together, a phone on its charger, a tower of blocks |
+| L4 Ripples | Monster film: trembling water as a warning | A kid stirring in bed, a library book, a passing truck as a fake-out |
+| L5 Brick Field | War film: a minefield | Building bricks, a slipper as a sweeper |
+| L6 The Pawshank Redemption | Prison break | The family dog, treats that make noise when they land |
+| L7 Zero Hour | Bomb defusal | A singing toy, a battery hatch, a tiny screwdriver |
+| L8 The Final Temple | Finale that calls back to L1 | The whole morning routine; "credits roll... then the baby cries" |
 
 ---
 
@@ -69,12 +103,13 @@ Each new mechanic is its own type, not more code in `GameModel`:
 
 | System | Level | Files |
 |---|---|---|
-| `PressurePlateSystem` (move existing creak logic here) | L1 | `Game/Mechanics/PressurePlates.swift` |
+| `FloorHazardSystem` (today's creaky boards, grown into creaky boards, toys and bricks; each hidden always or shown when lit) | L1, L5 | `Game/Mechanics/PressurePlates.swift` → `FloorHazards.swift` |
+| `LightSystem` (light cones blocked by walls and furniture; reveals hazards; light on a sleeper's face raises their meter; light sources can move) | L1, Bonus | `Game/Mechanics/Light.swift` |
 | `ChaseSystem` (rolling ball) | L1 | `Game/Mechanics/Chase.swift` |
-| `SightlineSystem` (sweeping camera cone) | L2 | `Game/Mechanics/Sightline.swift` |
+| `SightlineSystem` (sweeping camera cone; reuses `LightSystem`'s "what can this cone see" code) | L2 | `Game/Mechanics/Sightline.swift` |
 | `RopeSystem` (harness, sway) | L3 | `Game/Mechanics/Rope.swift` + `RopeScene.swift` |
 | `RippleSystem` (freeze) | L4 | `Game/Mechanics/Ripples.swift` |
-| `HazardFieldSystem` (hidden bricks, scan, sweep) | L5 | `Game/Mechanics/Bricks.swift` |
+| Scan and sweep actions for hidden hazards | L5 | in `FloorHazards.swift` |
 | `DogAISystem` (move dog, treats) | L6 | `Game/Mechanics/Dog.swift` |
 | `CountdownSystem` (defusal steps) | L7 | `Game/Mechanics/Countdown.swift` |
 
@@ -142,15 +177,35 @@ Shared rules for every level:
 - **Collectibles:** 1 lost sock and 1 pacifier per level, placed off the main path.
 
 ### L1 · "Raiders of the Lost Nap" (temple, tutorial)
-**Teaches:** pressure plates (creaky boards) and the noise meter.
+**Teaches:** the noise meter, and that light shows you the danger on the floor.
 
-- **Goal:** take the toddler's stuffed animal from the bed and leave a decoy of the right weight.
-- **Decoy choice:** three decoys on a shelf (rolled towel, sock bundle, beanbag). The wrong weight makes the toddler shift in their sleep (meter spike), not instant failure. The shelf shows a hint ("feels about as heavy as a bunny").
-- **Pressure plates:** creaky boards start hidden. A soft shimmer shows them in this level only, as a tutorial. From L2 on they're hidden until you step on them, like today.
-- **Escape:** once you swap, a toy ball starts rolling down the hallway (`ChaseSystem`). The ball moves along a fixed path at a set speed. If it reaches the door first it bumps the door and makes a big noise. You need to walk (not tiptoe) to beat it, so you must pick a route around the creaks.
-- **Teaching beats:** step 1, the meter on its own; step 2, one creak right in your path; step 3, the swap; step 4, the chase.
-- **Tuning:** ball speed (start at 3.5 tiles/s, between tiptoe 2.2 and walk 5.0), decoy weight tolerance.
-- **Size:** M
+Four steps, each building on the last.
+
+**1. Light: crack the door**
+- The toddler's room starts dark (the existing darkness layer). You stand at the door with the hall light behind you.
+- Choose how far to open the door: a crack, halfway or wide. Light comes in as a wedge.
+- Wider shows more floor, but wide open puts the light on the toddler's face. Their meter rises as long as it stays there: light is a second kind of noise.
+- Halfway lights the near half of the room and stays off the bed. That's the answer, but the far half stays dark.
+- A nightlight on the dresser lights the last stretch. Turning it on makes a small click (a little noise).
+
+**2. Dodge the toys**
+- Toys are scattered on the floor: a squeaky duck, a rattle, a xylophone, a bead maze. Stepping on one makes noise, and louder toys are worse.
+- Toys are only visible where the light falls. In the dark you can't see them, so step 1 matters.
+- One toy sits right where a player would walk without looking, so the lesson lands early.
+
+**3. The swap: match the weight**
+- The bunny is tucked under the toddler's arm. Three decoys on a shelf: a sock ball (too light), a rolled towel (right), a beanbag frog (too heavy, and it rattles).
+- Clue: you can't weigh the bunny, but you can see how deep it presses into the pillow. Picking up a decoy shows its weight as a small bar to compare.
+- The swap is a hold. Too slow and the toddler feels the missing weight (meter climbs during the gap); too fast and you jostle them (spike).
+- A wrong decoy makes the toddler shift in their sleep (a meter spike), not an instant fail, so players learn by trying.
+
+**4. Escape: the ball**
+- Taking the bunny knocks a toy ball loose. It rolls down the hall along a fixed path (`ChaseSystem`). If it reaches the door first it bumps it: a big noise.
+- You have to walk, not tiptoe, to beat it, across the floor you lit earlier. Steps 1 and 2 pay off here.
+
+- **Tuning:** door-light angles, light-on-face rate, toy noise levels, decoy weights and tolerance, swap timing window, ball speed (start at 3.5 tiles/s, between tiptoe 2.2 and walk 5.0).
+- **If it's too much for a first level:** cut the nightlight, so halfway open lights the whole path.
+- **Size:** M–L (the light system is new, but L2 and the bonus reuse it)
 
 ### L2 · "The Cookie Job" (heist)
 **Teaches:** sightlines.
@@ -186,7 +241,7 @@ Shared rules for every level:
 - **Size:** S–M. Most of this is a timer plus a `canMove` gate.
 
 ### L5 · "Brick Field" (minefield)
-**Teaches:** path planning.
+**Teaches:** path planning. This is the hard version of L1's toys: in L1 you see the hazards once they're lit and walk around them. Here they're hidden, and you need tools to find them.
 
 - **Goal:** cross the living room to the TV remote (or the front door).
 - **Bricks:** the floor has hidden building bricks. Stepping on one makes you yelp (big noise).
@@ -196,7 +251,7 @@ Shared rules for every level:
 - **Tuning:** brick density, scan radius, sweeper uses.
 - **Size:** M
 
-### L6 · "The Great Escape" (prison break)
+### L6 · "The Pawshank Redemption" (prison break)
 **Teaches:** distractions.
 
 - **Goal:** bedroom to front door without the dog barking.
@@ -220,7 +275,7 @@ Shared rules for every level:
 
 - **Goal:** the full morning routine: coffee, keys, lunchbox, out the door.
 - **Starts from today's map** (`LevelDefinition.morning`) with every mechanic layered in:
-  - creaky boards (L1)
+  - creaky boards and toys on the floor (L1)
   - baby monitor in the nursery hallway (L2)
   - a glass of water in Maya's room (L4)
   - bricks in the living room (L5)
@@ -229,6 +284,19 @@ Shared rules for every level:
   - L3's harness can be a short optional shortcut to the keys on top of the fridge
 - **Ending:** win card, then credits roll... then, after a pause, a baby cries. Card: "Credits roll... then the baby cries." A button: "Do it all again tomorrow" (restart in night mode).
 - **Size:** M, mostly level design and tuning since the systems already exist.
+
+### Bonus · "The Sunbeam" (adventure)
+**Unlocks:** after collecting every pacifier across the campaign.
+**Teaches:** aiming light and timing, building on L1's light.
+
+- **Goal:** the toddler hid your car keys, and you're already late.
+- **The clue:** the toddler's crayon "treasure map" is taped to the fridge. It's vague: a sun, a window, a squiggle and an X.
+- **The puzzle:** a crystal suncatcher hangs in the living-room window. When the sun comes up, light through it makes a bright spot on the floor. You set two things: which hook it hangs from (3 heights) and how far the blinds are open. Together they decide where the spot lands. The map has a hint for each (two dots by the window; the blinds drawn half shaded).
+- **The timing:** the sun keeps rising, so the spot crawls across the floor over about 20 seconds. For a moment it passes over the hiding place (a couch cushion, the toy box, a rain boot). Be standing there, ready. Miss it and you wait for the next pass, which costs time.
+- **The risk:** an older kid fell asleep on the couch. Wide-open blinds make the spot easy to see but put sunlight on their face (the same rule as L1).
+- **Searching:** hold to search gently (slow), or tap to dig fast (noisy).
+- **Reuses:** `LightSystem` and floor toys from L1. New: a light source that moves over time, and the hook and blind settings that aim it.
+- **Size:** S–M
 
 ### Why this order works
 - L1–L4 each add one sense: sound, sight, touch, then reading the kid.
@@ -242,7 +310,7 @@ Shared rules for every level:
 | Hook | How | Size |
 |---|---|---|
 | **Silent / Close Call / Woke Them** | Replace star logic in `finish()` with `StarRules` per level; show on level cards | S |
-| **Collectibles** (socks, pacifiers) | `Collectible` tiles in level data; picked up by stepping on them; counted in `ProgressStore`; a tally on the level select screen | S |
+| **Collectibles** (socks, pacifiers) | `Collectible` tiles in level data; picked up by stepping on them; counted in `ProgressStore`; a tally on the level select screen. Every pacifier unlocks the bonus level | S |
 | **Night mode** | Unlocks after a Silent clear. Reuse `makeDarknessTexture` as a full-screen dark layer with a cone cut out in the player's facing direction. Creaks, bricks and toys are only visible in the cone | M |
 | Best time per level | Store on clear | S |
 
@@ -255,12 +323,12 @@ Build L1 and L4 first. If the noise loop and the freeze loop aren't fun, the res
 | Phase | Work | Done when |
 |---|---|---|
 | **0. Refactor** | `LevelDefinition`, room map, `Mechanic` protocol, move creaks into `PressurePlateSystem`, `ProgressStore`, level select with 1 card, test target | Today's game plays exactly the same from level data |
-| **1. Prototype L1 + L4** | `ChaseSystem`, decoy swap, `RippleSystem`, two grey-box maps | Both levels playable start to finish |
-| **Playtest gate** | 5+ people play L1 and L4 cold | Do they understand creaks with no text? Do they freeze on ripples without being told twice? Do they want to retry for Silent? If not, tune or redesign before going on |
+| **1. Prototype L1 + L4** | `LightSystem`, `FloorHazardSystem` (toys), decoy swap, `ChaseSystem`, `RippleSystem`, two grey-box maps | Both levels playable start to finish |
+| **Playtest gate** | 5+ people play L1 and L4 cold | Do they crack the door just enough, and avoid the toys, with no text? Do they freeze on ripples without being told twice? Do they want to retry for Silent? If not, tune or redesign before going on |
 | **2. Core levels** | L2 sightlines, L5 bricks, L6 dog, L7 countdown (in that order, cheapest to riskiest) | Each level playable, rated, with collectibles |
 | **3. L3 prototype** | `RopeScene` side view; decide on side view vs. top-down fallback | One version is fun |
 | **4. Finale** | L8 built on the morning map with all systems; credits gag | Whole campaign beatable in order |
-| **5. Replay** | Ratings UI, collectibles UI, night mode | All hooks live |
+| **5. Replay** | Ratings UI, collectibles UI, night mode, bonus level "The Sunbeam" | All hooks live; bonus unlocks from pacifiers |
 | **6. Art, sound, polish** | Real art per level theme, sound design, haptics per mechanic, App Store screenshots | Ready for TestFlight |
 
 Art waits until after the playtest gate, so nothing gets drawn for a level that later changes.
@@ -301,5 +369,5 @@ DontWakeTheKidsTests/          new test target
 2. **L2's fail state.** Does being seen fill a "parent watching" meter (proposed), or is it instant failure? A meter is kinder and fits the noise-meter idea.
 3. **Map size.** Today's map is 14×15 on a phone in portrait. Levels like L5 may want more room; decide whether the camera scrolls or every level fits one screen (simpler; recommended for now).
 4. **Tutorial text.** Each level gets one intro card and one in-level hint. Keep text short; the riff is that the mechanics teach themselves.
-5. **Theme references.** Level names riff on film genres. Keep the art generic (a dusty "temple" made of pillows, not a copy of any film's look) so the game stays its own thing.
+5. **Theme references.** Every level must pass the "homage, not copy" rules in section 0, from design through art and sound.
 6. **Keep the current mode?** Recommend keeping today's morning as "Classic Morning" on the level select, unlocked from the start, so existing players don't lose it.
