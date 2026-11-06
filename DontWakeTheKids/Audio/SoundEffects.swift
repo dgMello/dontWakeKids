@@ -10,11 +10,13 @@ import AVFoundation
 enum SoundEffects {
     /// One sound the game can play. Some have several recordings; one is picked at random each time.
     private enum Sound: CaseIterable {
-        case creak, water, drawer, doorClose
+        case creak, water, drawer, doorClose, bark, babyCry
 
         var files: [String] {
             switch self {
             case .creak: return ["creak", "creak2"]
+            case .bark: return ["bark"]
+            case .babyCry: return ["babyCry"]
             case .water: return ["water"]
             case .drawer: return ["drawer"]
             case .doorClose: return ["doorClose"]
@@ -64,9 +66,14 @@ enum SoundEffects {
         case .won:
             stopTaskSound()
             play(.doorClose, volume: 0.9, varySpeed: false)
-        case .lost:
+        case .lost(let wokenID):
             stopTaskSound()
-        case .bark, .spoon, .taskDone:
+            if let cry = wakeSound(for: wokenID) {
+                play(cry, volume: 1.0, varySpeed: false)
+            }
+        case .bark:
+            play(.bark, volume: 1.0)
+        case .spoon, .taskDone:
             break // No recordings yet.
         }
     }
@@ -95,6 +102,14 @@ enum SoundEffects {
                 player.stop()
                 player.numberOfLoops = 0
             }
+        }
+    }
+
+    /// What each sleeper sounds like when they wake up. Matches `SleeperSpec.id`.
+    private static func wakeSound(for sleeperID: String?) -> Sound? {
+        switch sleeperID {
+        case "baby": return .babyCry
+        default: return nil // No recording for Maya yet.
         }
     }
 

@@ -10,6 +10,8 @@ The game uses the cleaned-up versions in `DontWakeTheKids/Audio/Sounds/`.
 | `Washing_hands.m4a` (Douglas Mello, own recording) | `water.caf`: brushing teeth; the shower plays it slowed to 0.8× and looped | 0.40–4.40 s, rumble cut, normalized, +5 dB with a limiter, 0.15 s fade in, 0.4 s fade out |
 | `Drawers_opening_and_closing.m4a` (Douglas Mello, own recording) | `drawer.caf`: getting dressed; the drawer thumps shut as the 3 s task ends | First open-and-close only (0.15–3.45 s), rumble cut, normalized, short fades |
 | `Door_closing.m4a` (Douglas Mello, own recording) | `doorClose.caf`: leaving through the front door (winning) | First 1.15 s, rumble cut, normalized, 0.2 s fade out |
+| `Baby_cry.m4a` (provided by Douglas Mello) | `babyCry.caf`: the baby waking up (losing) | Rumble cut, normalized, 0.7 s fade out because the recording ends mid-cry |
+| `Dog_barking.m4a` (provided by Douglas Mello) | `bark.caf`: the dog barking | Rumble cut, normalized, 0.2 s fade out because the recording ends mid-bark |
 | `Game_song.m4a` (Doug Mello, own composition, GarageBand for iOS) | `Audio/Music/theme.m4a`: title jingle on the start screen | Dropped the first 6.98 s of silence, normalized (peak −1.5 dB), 0.5 s fade out, cover art and metadata removed, stereo AAC 192 kb/s |
 
 Sound effects are trimmed, converted to mono 44.1 kHz `.caf`, with rumble cut below 80 Hz (`highpass=f=80`) and loudness evened out (`loudnorm`). For example, to redo the first creak with ffmpeg:

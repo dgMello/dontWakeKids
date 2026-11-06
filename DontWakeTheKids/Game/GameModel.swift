@@ -2,7 +2,9 @@ import Foundation
 import SwiftUI
 
 enum GameEvent {
-    case softCreak, loudCreak, bark, spoon, taskDone, won, lost
+    case softCreak, loudCreak, bark, spoon, taskDone, won
+    /// `wokenID` is the sleeper who woke up, or nil if time ran out.
+    case lost(wokenID: String?)
 }
 
 struct Toast: Equatable {
@@ -464,6 +466,6 @@ final class GameModel: ObservableObject {
 
         phase = .over(GameResult(won: won, title: title, text: text, stats: stats,
                                  stars: stars, score: score, isNewBest: isNewBest))
-        onEvent?(won ? .won : .lost)
+        onEvent?(won ? .won : .lost(wokenID: wokenID))
     }
 }
