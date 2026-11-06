@@ -19,6 +19,8 @@ struct StartScreenView: View {
             .padding(.horizontal, 32)
         }
         .preferredColorScheme(.dark)
+        .onAppear { Music.playTheme() }
+        .onDisappear { Music.stop() }
         .sheet(isPresented: $showRules) {
             RulesView()
         }
