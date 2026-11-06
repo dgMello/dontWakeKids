@@ -43,7 +43,9 @@ final class ProgressStore: ObservableObject {
     }
 
     /// A level is open if it's the first one, or the one before it was cleared.
+    /// Classic Morning sits outside the campaign and is always open.
     func isUnlocked(_ id: LevelID) -> Bool {
+        if id == .classicMorning { return true }
         let order = LevelDefinition.all.map(\.id)
         guard let index = order.firstIndex(of: id) else { return false }
         if index == 0 { return true }

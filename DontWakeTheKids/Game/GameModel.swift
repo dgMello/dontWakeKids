@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 
 enum GameEvent {
-    case softCreak, loudCreak, bark, spoon, taskDone, won, lost
+    case softCreak, loudCreak, bark, spoon, taskDone, rumble, thud, won, lost
 }
 
 struct Toast: Equatable {
@@ -206,6 +206,10 @@ final class GameModel: ObservableObject {
             showToast("Already done")
             return
         }
+        if let needed = task.prerequisite, !completed.contains(needed.item) {
+            showToast(needed.message, bad: true)
+            return
+        }
         // Stop where you stand.
         path = []
         pathVersion += 1
@@ -214,6 +218,14 @@ final class GameModel: ObservableObject {
         busy = Busy(task: task, dropsSpoon: task == .lunch && Double.random(in: 0..<1) < 0.4)
         activeTask = task
         activeProgress = 0
+    }
+
+    /// Stops as soon as possible: finishes the step in progress, if any, and drops the rest of the route.
+    func stopWalking() {
+        guard phase == .playing, let next = path.first else { return }
+        let onTile = posX == Double(tile.x) && posY == Double(tile.y)
+        path = onTile ? [] : [next]
+        pathVersion += 1
     }
 
     func stopTask() {
@@ -379,9 +391,10 @@ final class GameModel: ObservableObject {
             dogHere = false
             showToast("\(level.dog?.name ?? "The dog") trots outside")
         } else {
-            showToast("\(b.task.name) done")
+            showToast(b.task.doneMessage)
         }
         onEvent?(.taskDone)
+        for m in mechanics { m.taskCompleted(b.task, model: self) }
         refreshNearby()
     }
 
@@ -434,7 +447,14 @@ final class GameModel: ObservableObject {
         var text: String
         let stats: String
 
-        if won {
+        if won, case .quiet(let limit, let outro) = level.starRules {
+            let silent = Double(peak) < limit
+            stars = silent ? 3 : 2
+            score = 500 + max(0, 100 - peak) * 5
+            title = silent ? outro.silentTitle : outro.closeCallTitle
+            text = silent ? outro.silentText : outro.closeCallText
+            stats = "Score \(score) · closest call \(peak)%"
+        } else if won {
             stars = (tasksDone == total && peak < 60) ? 3 : (tasksDone >= 4 ? 2 : 1)
             score = tasksDone * 100 + (freshCoffee ? 50 : 0) + minutesLeft * 10 + max(0, 100 - peak)
             title = stars == 3 ? "Clean getaway" : "Out the door"

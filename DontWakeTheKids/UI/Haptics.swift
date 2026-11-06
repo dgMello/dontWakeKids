@@ -11,10 +11,12 @@ enum Haptics {
         switch event {
         case .softCreak:
             light.impactOccurred()
-        case .loudCreak, .spoon:
+        case .loudCreak, .spoon, .thud:
             heavy.impactOccurred()
         case .bark:
             notify.notificationOccurred(.warning)
+        case .rumble:
+            heavy.impactOccurred(intensity: 0.5)
         case .taskDone:
             light.impactOccurred(intensity: 0.6)
         case .won:

@@ -25,7 +25,7 @@ final class HouseScene: SKScene {
     private var lastPathVersion = -1
     private var lastUpdate: TimeInterval = 0
 
-    private var level: LevelDefinition { model.level }
+    var level: LevelDefinition { model.level }
 
     init(model: GameModel) {
         self.model = model

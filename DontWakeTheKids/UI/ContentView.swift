@@ -155,6 +155,17 @@ struct ContentView: View {
                 }
                 .buttonStyle(GameButtonStyle(highlighted: model.tiptoe))
 
+                if model.mechanic(RippleSystem.self) != nil, model.activeTask == nil {
+                    Button {
+                        model.stopWalking()
+                    } label: {
+                        Label("Freeze", systemImage: "hand.raised.fill")
+                            .font(.body.weight(.heavy))
+                            .frame(maxWidth: .infinity, minHeight: 48)
+                    }
+                    .buttonStyle(GameButtonStyle())
+                }
+
                 if let task = model.activeTask {
                     VStack(alignment: .leading, spacing: 6) {
                         Text(task.name + "…")
@@ -180,7 +191,9 @@ struct ContentView: View {
                 } else {
                     LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 8) {
                         ForEach(model.availableTasks) { task in
-                            TaskButton(task: task) { model.perform(task) }
+                            TaskButton(task: task, title: task == .leave ? model.level.exitName : nil) {
+                                model.perform(task)
+                            }
                         }
                     }
                 }

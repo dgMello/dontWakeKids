@@ -34,7 +34,7 @@ enum Room: String, CaseIterable {
 
 /// Something you can stand next to and use.
 enum Station: String {
-    case dress, teeth, shower, coffee, lunch, dog, leave
+    case dress, teeth, shower, coffee, lunch, dog, leave, shelf, swap, book
 }
 
 struct Furniture {

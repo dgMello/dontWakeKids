@@ -58,6 +58,12 @@ final class LevelDefinitionTests: XCTestCase {
         XCTAssertEqual(level.attenuation(from: .living, to: .baby), 0.22)
     }
 
+    func testEveryLevelCanBeLeft() {
+        for level in LevelDefinition.all {
+            XCTAssertNotNil(level.frontDoor, level.id.rawValue)
+        }
+    }
+
     func testStations() {
         let level = LevelDefinition.classicMorning
         XCTAssertEqual(level.station(at: Tile(x: 4, y: 1)), .dress)

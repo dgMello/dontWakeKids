@@ -37,7 +37,7 @@ struct MeterView: View {
 
 /// The yellow sticky note on the fridge, in Dad's handwriting.
 struct ChecklistNote: View {
-    var items: [ChecklistItem] = ChecklistItem.allCases
+    let items: [ChecklistItem]
     let completed: Set<ChecklistItem>
 
     var body: some View {
@@ -63,12 +63,13 @@ struct ChecklistNote: View {
 
 struct TaskButton: View {
     let task: MorningTask
+    var title: String?
     let action: () -> Void
 
     var body: some View {
         Button(action: action) {
             VStack(alignment: .leading, spacing: 2) {
-                Text(task.name)
+                Text(title ?? task.name)
                     .font(.subheadline.weight(.heavy))
                     .foregroundStyle(Color.ink)
                 Text(task.duration > 0 ? "\(task.detail) · \(Int(task.duration))s" : task.detail)

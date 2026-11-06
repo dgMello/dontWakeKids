@@ -1,7 +1,7 @@
 import Foundation
 
 enum LevelID: String, CaseIterable, Codable {
-    case classicMorning
+    case lostNap, ripples, classicMorning
 }
 
 /// A kid asleep somewhere in the level.
@@ -56,6 +56,25 @@ struct LevelIntro {
 /// Which rule systems a level switches on. New levels add cases here.
 enum MechanicKind {
     case pressurePlates
+    case decoySwap(DecoySpec)
+    case chase(ChaseSpec)
+    case ripples(RippleSpec)
+}
+
+/// End-card text for levels rated on how quiet you were.
+struct LevelOutro {
+    let silentTitle: String
+    let silentText: String
+    let closeCallTitle: String
+    let closeCallText: String
+}
+
+/// How a win turns into stars.
+enum StarRules {
+    /// Classic Morning: tasks done, then how close a call it was.
+    case morningRoutine
+    /// 3 stars if the loudest moment stayed under this percent, otherwise 2.
+    case quiet(under: Double, outro: LevelOutro)
 }
 
 /// Everything that describes one level: the map, who's asleep, the rules in play.
@@ -82,6 +101,11 @@ struct LevelDefinition: Identifiable {
     let leaveRequirement: (item: ChecklistItem, message: String)?
     let clock: LevelClock?
     let mechanics: [MechanicKind]
+    /// Name of the button at the front door.
+    let exitName: String
+    /// Tutorial only: creaky boards shimmer before you step on them.
+    let platesVisible: Bool
+    let starRules: StarRules
 
     // Derived from the above in `init`.
     let cols: Int
@@ -96,7 +120,8 @@ struct LevelDefinition: Identifiable {
          start: Tile, sleepers: [SleeperSpec], dog: DogSpec?, pressurePlates: Set<Tile>,
          adjacentRooms: [(Room, Room)], checklist: [ChecklistItem],
          leaveRequirement: (item: ChecklistItem, message: String)?, clock: LevelClock?,
-         mechanics: [MechanicKind]) {
+         mechanics: [MechanicKind], exitName: String = "Leave for work", platesVisible: Bool = false,
+         starRules: StarRules = .morningRoutine) {
         self.id = id
         self.title = title
         self.subtitle = subtitle
@@ -113,6 +138,9 @@ struct LevelDefinition: Identifiable {
         self.leaveRequirement = leaveRequirement
         self.clock = clock
         self.mechanics = mechanics
+        self.exitName = exitName
+        self.platesVisible = platesVisible
+        self.starRules = starRules
 
         grid = layout.map { Array($0) }
         rows = grid.count
@@ -182,7 +210,7 @@ struct LevelDefinition: Identifiable {
 
 extension LevelDefinition {
     /// Every level in play order. The level select screen shows these.
-    static let all: [LevelDefinition] = [.classicMorning]
+    static let all: [LevelDefinition] = [.lostNap, .ripples, .classicMorning]
 
     static func level(_ id: LevelID) -> LevelDefinition {
         all.first { $0.id == id } ?? .classicMorning

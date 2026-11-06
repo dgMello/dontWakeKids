@@ -37,7 +37,7 @@ If the project won't open, regenerate it: `brew install xcodegen && xcodegen gen
 ## Adding a level
 
 1. Add a case to `LevelID` and a file in `Game/Levels/` with a `static let` for the level.
-2. Add it to `LevelDefinition.all` in play order. It unlocks when the level before it is cleared.
+2. Add it to `LevelDefinition.all` in play order. It unlocks when the level before it is cleared. Classic Morning stays last and is always open.
 3. New rules go in a new `Mechanic` in `Game/Mechanics/`, with a `MechanicKind` case so levels can switch it on.
 
 ## Tuning

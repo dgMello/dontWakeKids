@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09D0C8A40BE8AF1BA2E57209 /* Ripples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0A67DA601BCAC8E2596F1E /* Ripples.swift */; };
 		154C05D8A9588BD24950FC4B /* LevelDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4101EB3D95D9F0A30DD7D293 /* LevelDefinition.swift */; };
+		1FE3B0E40B63DCD661BE4D74 /* Chase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49687802626A89668C2B819F /* Chase.swift */; };
 		27B5F88D893F461FD025624E /* LevelSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF0E15DFA058BED463DA45F /* LevelSelectView.swift */; };
 		2DA8FB1EA4F6DCCFEE96DC5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E40362D7D111EA3682E791F2 /* Assets.xcassets */; };
 		46D6F5BE14099AC53C642ABC /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BADEE0403CE92C9B05A93C /* Haptics.swift */; };
@@ -15,6 +17,7 @@
 		4D192979ECE7490EB5A51624 /* DontWakeTheKidsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D51D5E0EB05FBAB31FD771 /* DontWakeTheKidsApp.swift */; };
 		59FD45CCE2BAE97565010E72 /* GameModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CACC0AE36DF36E2F0578A /* GameModelTests.swift */; };
 		6658AE2CD26F96DAE07646D6 /* ProgressStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FA558C21DA1E902EDB9DFC /* ProgressStoreTests.swift */; };
+		66DB856FF43B263E564AD508 /* CampaignTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228E6592959737B60315DEDD /* CampaignTests.swift */; };
 		6996B5061A7A803BAD965B67 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79E868DFA409FB4794C9972 /* Map.swift */; };
 		6CF4C5AB80CCEECAF6C777C4 /* LevelDefinitionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAA4E1A60470AEF3D4484D8 /* LevelDefinitionTests.swift */; };
 		7163D43E76CA3AB4159558D8 /* PressurePlates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1052D5ACDEB5905AF598E5F /* PressurePlates.swift */; };
@@ -23,9 +26,12 @@
 		8DF7012CD63D678A3A84C2E0 /* ProgressStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C5E063EF07DF1A2B140E19 /* ProgressStore.swift */; };
 		A2C8E347FF0A072C2A4F90DE /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EAF96F2DA59374EBD1ACFC /* Palette.swift */; };
 		A8BE560C4CF8C625FD73B65E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ACFB3540202A50C38C99BA /* ContentView.swift */; };
+		B03EC5661073D7CD677B34EE /* DecoySwap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129F16EE4AC566DF8D915988 /* DecoySwap.swift */; };
 		B8BDBF7E5C9196D48D2429C4 /* Mechanic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B07063ADCE8A8746C43F23 /* Mechanic.swift */; };
+		C0B0E195E4970B2F16CBDF03 /* Level4_Ripples.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6891F42CBA15149839398D8 /* Level4_Ripples.swift */; };
 		D02B8CEAA71CA40CE5301E3D /* HouseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58150BFF5E180CAEA235C37C /* HouseScene.swift */; };
 		D2B044131AEDE47E8157F342 /* ClassicMorning.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33DAA6EBA6DE70F8C0FEBE6 /* ClassicMorning.swift */; };
+		E6E37754586D9AC51249D231 /* Level1_LostNap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9279C8489EB18EBE355B95 /* Level1_LostNap.swift */; };
 		E78D44798421751A52A6968B /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DEAA772A7429BF3E77EC38 /* GameModel.swift */; };
 		F66CA9D4CF55677AB9C034C6 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52B4FD6C6B9D76DF42A5915 /* Tasks.swift */; };
 /* End PBXBuildFile section */
@@ -42,13 +48,18 @@
 
 /* Begin PBXFileReference section */
 		00DEAA772A7429BF3E77EC38 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		129F16EE4AC566DF8D915988 /* DecoySwap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoySwap.swift; sourceTree = "<group>"; };
 		13D6CC1958967148FA7F26EF /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
 		19C5E063EF07DF1A2B140E19 /* ProgressStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressStore.swift; sourceTree = "<group>"; };
 		1FF0E15DFA058BED463DA45F /* LevelSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSelectView.swift; sourceTree = "<group>"; };
+		228E6592959737B60315DEDD /* CampaignTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignTests.swift; sourceTree = "<group>"; };
 		2D2BD9C04000859BFC8F6495 /* DontWakeTheKids.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = DontWakeTheKids.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38ACFB3540202A50C38C99BA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3C0A67DA601BCAC8E2596F1E /* Ripples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ripples.swift; sourceTree = "<group>"; };
+		3F9279C8489EB18EBE355B95 /* Level1_LostNap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level1_LostNap.swift; sourceTree = "<group>"; };
 		40D51D5E0EB05FBAB31FD771 /* DontWakeTheKidsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DontWakeTheKidsApp.swift; sourceTree = "<group>"; };
 		4101EB3D95D9F0A30DD7D293 /* LevelDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDefinition.swift; sourceTree = "<group>"; };
+		49687802626A89668C2B819F /* Chase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chase.swift; sourceTree = "<group>"; };
 		4CD7F26A848B0DE27AA4F69F /* DontWakeTheKidsTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = DontWakeTheKidsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58150BFF5E180CAEA235C37C /* HouseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseScene.swift; sourceTree = "<group>"; };
 		72EAF96F2DA59374EBD1ACFC /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
@@ -56,6 +67,7 @@
 		9CAA4E1A60470AEF3D4484D8 /* LevelDefinitionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDefinitionTests.swift; sourceTree = "<group>"; };
 		A1052D5ACDEB5905AF598E5F /* PressurePlates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressurePlates.swift; sourceTree = "<group>"; };
 		A3B07063ADCE8A8746C43F23 /* Mechanic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mechanic.swift; sourceTree = "<group>"; };
+		A6891F42CBA15149839398D8 /* Level4_Ripples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level4_Ripples.swift; sourceTree = "<group>"; };
 		A79E868DFA409FB4794C9972 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		B3BADEE0403CE92C9B05A93C /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		C0D841758ACCA6BE70E41197 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
@@ -79,8 +91,11 @@
 		018272144CCF0D64D4F03F10 /* Mechanics */ = {
 			isa = PBXGroup;
 			children = (
+				49687802626A89668C2B819F /* Chase.swift */,
+				129F16EE4AC566DF8D915988 /* DecoySwap.swift */,
 				A3B07063ADCE8A8746C43F23 /* Mechanic.swift */,
 				A1052D5ACDEB5905AF598E5F /* PressurePlates.swift */,
+				3C0A67DA601BCAC8E2596F1E /* Ripples.swift */,
 			);
 			path = Mechanics;
 			sourceTree = "<group>";
@@ -89,6 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				C33DAA6EBA6DE70F8C0FEBE6 /* ClassicMorning.swift */,
+				3F9279C8489EB18EBE355B95 /* Level1_LostNap.swift */,
+				A6891F42CBA15149839398D8 /* Level4_Ripples.swift */,
 			);
 			path = Levels;
 			sourceTree = "<group>";
@@ -104,6 +121,7 @@
 		1D9DFBEF9301175DF9E248AB /* DontWakeTheKidsTests */ = {
 			isa = PBXGroup;
 			children = (
+				228E6592959737B60315DEDD /* CampaignTests.swift */,
 				CA6CACC0AE36DF36E2F0578A /* GameModelTests.swift */,
 				9CAA4E1A60470AEF3D4484D8 /* LevelDefinitionTests.swift */,
 				82FA558C21DA1E902EDB9DFC /* ProgressStoreTests.swift */,
@@ -260,13 +278,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FE3B0E40B63DCD661BE4D74 /* Chase.swift in Sources */,
 				D2B044131AEDE47E8157F342 /* ClassicMorning.swift in Sources */,
 				8DD94315C3C7A0DD989F05A1 /* Components.swift in Sources */,
 				A8BE560C4CF8C625FD73B65E /* ContentView.swift in Sources */,
+				B03EC5661073D7CD677B34EE /* DecoySwap.swift in Sources */,
 				4D192979ECE7490EB5A51624 /* DontWakeTheKidsApp.swift in Sources */,
 				E78D44798421751A52A6968B /* GameModel.swift in Sources */,
 				46D6F5BE14099AC53C642ABC /* Haptics.swift in Sources */,
 				D02B8CEAA71CA40CE5301E3D /* HouseScene.swift in Sources */,
+				E6E37754586D9AC51249D231 /* Level1_LostNap.swift in Sources */,
+				C0B0E195E4970B2F16CBDF03 /* Level4_Ripples.swift in Sources */,
 				154C05D8A9588BD24950FC4B /* LevelDefinition.swift in Sources */,
 				27B5F88D893F461FD025624E /* LevelSelectView.swift in Sources */,
 				6996B5061A7A803BAD965B67 /* Map.swift in Sources */,
@@ -274,6 +296,7 @@
 				A2C8E347FF0A072C2A4F90DE /* Palette.swift in Sources */,
 				7163D43E76CA3AB4159558D8 /* PressurePlates.swift in Sources */,
 				8DF7012CD63D678A3A84C2E0 /* ProgressStore.swift in Sources */,
+				09D0C8A40BE8AF1BA2E57209 /* Ripples.swift in Sources */,
 				4B22BAB0C587A7453C95B543 /* RulesView.swift in Sources */,
 				77851EAE6CEAC7DDB901C873 /* StartScreenView.swift in Sources */,
 				F66CA9D4CF55677AB9C034C6 /* Tasks.swift in Sources */,
@@ -284,6 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66DB856FF43B263E564AD508 /* CampaignTests.swift in Sources */,
 				59FD45CCE2BAE97565010E72 /* GameModelTests.swift in Sources */,
 				6CF4C5AB80CCEECAF6C777C4 /* LevelDefinitionTests.swift in Sources */,
 				6658AE2CD26F96DAE07646D6 /* ProgressStoreTests.swift in Sources */,

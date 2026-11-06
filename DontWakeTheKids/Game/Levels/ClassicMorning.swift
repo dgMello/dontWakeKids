@@ -84,7 +84,7 @@ extension LevelDefinition {
             (.hall, .master), (.baby, .hall), (.bath, .hall), (.hall, .kid), (.hall, .kitchen),
             (.kitchen, .living), (.baby, .master), (.baby, .bath), (.kid, .living), (.kid, .kitchen),
         ],
-        checklist: ChecklistItem.allCases,
+        checklist: ChecklistItem.morningRoutine,
         leaveRequirement: (item: .dress, message: "You can't leave in pajamas"),
         clock: LevelClock(
             startMinute: 30,      // 5:30 AM

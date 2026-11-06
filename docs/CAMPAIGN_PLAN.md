@@ -127,6 +127,20 @@ What was built, and where it differs from the sketch above:
 - `ProgressStore` carries over the old single best score into Classic Morning.
 - The start screen's button now says **Play** and opens the level list.
 
+### 2.7 Phase 1 status: built, waiting on the playtest gate
+
+L1 and L4 are playable start to finish on grey-box maps (`Game/Levels/Level1_LostNap.swift`, `Level4_Ripples.swift`). Level select order is L1, L4, Classic Morning. Classic Morning is always open; L4 unlocks when L1 is cleared.
+
+Where the build differs from the plans below:
+
+- **No hard freeze in L4.** `canMove` stays true during a stir. Moving is allowed and very loud, because choosing to stop is the skill. Tap-to-walk had no way to stop, so L4 has a **Freeze** button (`GameModel.stopWalking()`).
+- **Objectives are still the checklist plus `leaveRequirement`.** Both levels fit that, so the `Objective` enum isn't built yet. `MorningTask.prerequisite` covers "decoy before swap".
+- **`StarRules` has two cases.** `.morningRoutine` keeps Classic Morning's old rules; `.quiet(under:outro:)` gives 3 stars under 35% and 2 otherwise. 1 star waits for collectibles.
+- **The ball waits 0.8 s after the swap** so the swap toast can be read and the player can react.
+- **Wrong decoy:** the sock bundle is correct; the others add a spike of about 45% in-room noise. The choice can't be changed once made.
+- **The truck** shakes the glass sideways with no rings and shows a toast. Moving during it is free.
+- **No sound yet.** The ripple tells are the rings, a haptic and a one-time toast. The short sound waits for Phase 6.
+
 ---
 
 ## 3. The levels
