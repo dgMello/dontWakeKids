@@ -58,8 +58,15 @@ struct StartScreenView: View {
                 .font(.subheadline.weight(.semibold))
                 .foregroundStyle(Color.muted)
                 .frame(minHeight: 44)
+            Text(Self.copyright)
+                .font(.caption2)
+                .foregroundStyle(Color.muted.opacity(0.7))
+                .padding(.top, 8)
         }
     }
+
+    /// Year of first release. Keep it fixed; add a range (e.g. "2026–2027") when a new year's version ships.
+    static let copyright = "© 2026 Douglas Mello. All rights reserved."
 }
 
 #Preview {
