@@ -10,13 +10,15 @@ import AVFoundation
 enum SoundEffects {
     /// One sound the game can play. Some have several recordings; one is picked at random each time.
     private enum Sound: CaseIterable {
-        case creak, water, drawer, doorClose, bark, babyCry
+        case creak, water, drawer, doorClose, bark, babyCry, lunch, spoon
 
         var files: [String] {
             switch self {
             case .creak: return ["creak", "creak2"]
             case .bark: return ["bark"]
             case .babyCry: return ["babyCry"]
+            case .lunch: return ["lunch"]
+            case .spoon: return ["spoon"]
             case .water: return ["water"]
             case .drawer: return ["drawer"]
             case .doorClose: return ["doorClose"]
@@ -73,8 +75,11 @@ enum SoundEffects {
             }
         case .bark:
             play(.bark, volume: 1.0)
-        case .spoon, .taskDone:
-            break // No recordings yet.
+        case .spoon:
+            // Plays over the lunch sound, which keeps going.
+            play(.spoon, volume: 1.0)
+        case .taskDone:
+            break // No recording yet.
         }
     }
 
@@ -119,7 +124,9 @@ enum SoundEffects {
         case .teeth: return TaskSound(sound: .water, volume: 0.6)
         // The shower reuses the water, slowed down for a deeper sound and looped to last 6 seconds.
         case .shower: return TaskSound(sound: .water, volume: 1.0, rate: 0.8, loops: 1)
-        case .grind, .instant, .lunch, .dog, .leave: return nil // No recordings yet.
+        // Fridge, cutting board, then the silverware drawer, mixed into one 4-second file.
+        case .lunch: return TaskSound(sound: .lunch, volume: 0.7)
+        case .grind, .instant, .dog, .leave: return nil // No recordings yet.
         }
     }
 
