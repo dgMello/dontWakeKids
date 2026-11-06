@@ -32,7 +32,11 @@ struct ContentView: View {
         }
         .preferredColorScheme(.dark)
         .onAppear {
-            model.onEvent = { Haptics.play($0) }
+            SoundEffects.preload()
+            model.onEvent = { event in
+                Haptics.play(event)
+                SoundEffects.play(event)
+            }
             UIApplication.shared.isIdleTimerDisabled = true
         }
     }
