@@ -39,6 +39,12 @@ struct ContentView: View {
             }
             UIApplication.shared.isIdleTimerDisabled = true
         }
+        .onChange(of: model.activeTask) { _, task in
+            SoundEffects.taskChanged(to: task)
+        }
+        .onDisappear {
+            SoundEffects.stopTaskSound()
+        }
     }
 
     private var header: some View {
