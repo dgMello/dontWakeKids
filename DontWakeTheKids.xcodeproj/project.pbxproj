@@ -8,14 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		09D0C8A40BE8AF1BA2E57209 /* Ripples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0A67DA601BCAC8E2596F1E /* Ripples.swift */; };
+		137435BDA5DCC9565DA7F934 /* creak.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2EB559EA5564AC07F14A5FF0 /* creak.caf */; };
 		154C05D8A9588BD24950FC4B /* LevelDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4101EB3D95D9F0A30DD7D293 /* LevelDefinition.swift */; };
 		1FE3B0E40B63DCD661BE4D74 /* Chase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49687802626A89668C2B819F /* Chase.swift */; };
 		27B5F88D893F461FD025624E /* LevelSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF0E15DFA058BED463DA45F /* LevelSelectView.swift */; };
 		2DA8FB1EA4F6DCCFEE96DC5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E40362D7D111EA3682E791F2 /* Assets.xcassets */; };
+		2DB476FAAE3583BFADDEA4A7 /* drawer.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9161061C6A6548858027E22E /* drawer.caf */; };
+		3B9A0191D14F6875135CE50A /* water.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4124D8A87041127863016413 /* water.caf */; };
+		3D4625D0E258F8B5761C6D1D /* doorClose.caf in Resources */ = {isa = PBXBuildFile; fileRef = 17D92AAAEC2A3A19811CAF88 /* doorClose.caf */; };
 		46D6F5BE14099AC53C642ABC /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BADEE0403CE92C9B05A93C /* Haptics.swift */; };
 		4B22BAB0C587A7453C95B543 /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D6CC1958967148FA7F26EF /* RulesView.swift */; };
 		4D192979ECE7490EB5A51624 /* DontWakeTheKidsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D51D5E0EB05FBAB31FD771 /* DontWakeTheKidsApp.swift */; };
 		59FD45CCE2BAE97565010E72 /* GameModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CACC0AE36DF36E2F0578A /* GameModelTests.swift */; };
+		5FB45E48794EAB9EC7FEF4A9 /* SoundEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401B88B7820CE25C4B1BBE54 /* SoundEffects.swift */; };
 		6658AE2CD26F96DAE07646D6 /* ProgressStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FA558C21DA1E902EDB9DFC /* ProgressStoreTests.swift */; };
 		66DB856FF43B263E564AD508 /* CampaignTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228E6592959737B60315DEDD /* CampaignTests.swift */; };
 		6996B5061A7A803BAD965B67 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79E868DFA409FB4794C9972 /* Map.swift */; };
@@ -25,6 +30,7 @@
 		8DD94315C3C7A0DD989F05A1 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D841758ACCA6BE70E41197 /* Components.swift */; };
 		8DF7012CD63D678A3A84C2E0 /* ProgressStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C5E063EF07DF1A2B140E19 /* ProgressStore.swift */; };
 		A2C8E347FF0A072C2A4F90DE /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EAF96F2DA59374EBD1ACFC /* Palette.swift */; };
+		A70B4E3AA6AB8027545D3C3A /* creak2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9A34E71C1BE0B54B7EDF8216 /* creak2.caf */; };
 		A8BE560C4CF8C625FD73B65E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ACFB3540202A50C38C99BA /* ContentView.swift */; };
 		B03EC5661073D7CD677B34EE /* DecoySwap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129F16EE4AC566DF8D915988 /* DecoySwap.swift */; };
 		B8BDBF7E5C9196D48D2429C4 /* Mechanic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B07063ADCE8A8746C43F23 /* Mechanic.swift */; };
@@ -50,20 +56,26 @@
 		00DEAA772A7429BF3E77EC38 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		129F16EE4AC566DF8D915988 /* DecoySwap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoySwap.swift; sourceTree = "<group>"; };
 		13D6CC1958967148FA7F26EF /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
+		17D92AAAEC2A3A19811CAF88 /* doorClose.caf */ = {isa = PBXFileReference; path = doorClose.caf; sourceTree = "<group>"; };
 		19C5E063EF07DF1A2B140E19 /* ProgressStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressStore.swift; sourceTree = "<group>"; };
 		1FF0E15DFA058BED463DA45F /* LevelSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSelectView.swift; sourceTree = "<group>"; };
 		228E6592959737B60315DEDD /* CampaignTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignTests.swift; sourceTree = "<group>"; };
 		2D2BD9C04000859BFC8F6495 /* DontWakeTheKids.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = DontWakeTheKids.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2EB559EA5564AC07F14A5FF0 /* creak.caf */ = {isa = PBXFileReference; path = creak.caf; sourceTree = "<group>"; };
 		38ACFB3540202A50C38C99BA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3C0A67DA601BCAC8E2596F1E /* Ripples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ripples.swift; sourceTree = "<group>"; };
 		3F9279C8489EB18EBE355B95 /* Level1_LostNap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level1_LostNap.swift; sourceTree = "<group>"; };
+		401B88B7820CE25C4B1BBE54 /* SoundEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEffects.swift; sourceTree = "<group>"; };
 		40D51D5E0EB05FBAB31FD771 /* DontWakeTheKidsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DontWakeTheKidsApp.swift; sourceTree = "<group>"; };
 		4101EB3D95D9F0A30DD7D293 /* LevelDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDefinition.swift; sourceTree = "<group>"; };
+		4124D8A87041127863016413 /* water.caf */ = {isa = PBXFileReference; path = water.caf; sourceTree = "<group>"; };
 		49687802626A89668C2B819F /* Chase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chase.swift; sourceTree = "<group>"; };
 		4CD7F26A848B0DE27AA4F69F /* DontWakeTheKidsTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = DontWakeTheKidsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58150BFF5E180CAEA235C37C /* HouseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseScene.swift; sourceTree = "<group>"; };
 		72EAF96F2DA59374EBD1ACFC /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		82FA558C21DA1E902EDB9DFC /* ProgressStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressStoreTests.swift; sourceTree = "<group>"; };
+		9161061C6A6548858027E22E /* drawer.caf */ = {isa = PBXFileReference; path = drawer.caf; sourceTree = "<group>"; };
+		9A34E71C1BE0B54B7EDF8216 /* creak2.caf */ = {isa = PBXFileReference; path = creak2.caf; sourceTree = "<group>"; };
 		9CAA4E1A60470AEF3D4484D8 /* LevelDefinitionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDefinitionTests.swift; sourceTree = "<group>"; };
 		A1052D5ACDEB5905AF598E5F /* PressurePlates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressurePlates.swift; sourceTree = "<group>"; };
 		A3B07063ADCE8A8746C43F23 /* Mechanic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mechanic.swift; sourceTree = "<group>"; };
@@ -129,11 +141,24 @@
 			path = DontWakeTheKidsTests;
 			sourceTree = "<group>";
 		};
+		21FDF6BA82A12844E8A133C4 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				2EB559EA5564AC07F14A5FF0 /* creak.caf */,
+				9A34E71C1BE0B54B7EDF8216 /* creak2.caf */,
+				17D92AAAEC2A3A19811CAF88 /* doorClose.caf */,
+				9161061C6A6548858027E22E /* drawer.caf */,
+				4124D8A87041127863016413 /* water.caf */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		8FF714E99008A233DA116990 /* DontWakeTheKids */ = {
 			isa = PBXGroup;
 			children = (
 				E40362D7D111EA3682E791F2 /* Assets.xcassets */,
 				111BBB6248CB42AA17179128 /* App */,
+				E6E6EF3FEBB66368D93F4E70 /* Audio */,
 				B330CAFCF263379A83DE1653 /* Game */,
 				DE2B7F99DD0A02438A817DC7 /* UI */,
 			);
@@ -184,6 +209,15 @@
 				FFC8848ED697CAFB53BE513F /* StartScreenView.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		E6E6EF3FEBB66368D93F4E70 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				401B88B7820CE25C4B1BBE54 /* SoundEffects.swift */,
+				21FDF6BA82A12844E8A133C4 /* Sounds */,
+			);
+			path = Audio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,6 +302,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DA8FB1EA4F6DCCFEE96DC5B /* Assets.xcassets in Resources */,
+				137435BDA5DCC9565DA7F934 /* creak.caf in Resources */,
+				A70B4E3AA6AB8027545D3C3A /* creak2.caf in Resources */,
+				3D4625D0E258F8B5761C6D1D /* doorClose.caf in Resources */,
+				2DB476FAAE3583BFADDEA4A7 /* drawer.caf in Resources */,
+				3B9A0191D14F6875135CE50A /* water.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +337,7 @@
 				8DF7012CD63D678A3A84C2E0 /* ProgressStore.swift in Sources */,
 				09D0C8A40BE8AF1BA2E57209 /* Ripples.swift in Sources */,
 				4B22BAB0C587A7453C95B543 /* RulesView.swift in Sources */,
+				5FB45E48794EAB9EC7FEF4A9 /* SoundEffects.swift in Sources */,
 				77851EAE6CEAC7DDB901C873 /* StartScreenView.swift in Sources */,
 				F66CA9D4CF55677AB9C034C6 /* Tasks.swift in Sources */,
 			);

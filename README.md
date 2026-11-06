@@ -31,6 +31,7 @@ If the project won't open, regenerate it: `brew install xcodegen && xcodegen gen
 | `UI/ContentView.swift` | SwiftUI screen: clock, meters, sticky note, the board, task buttons, intro/end overlays |
 | `UI/Components.swift` | Meter bars, sticky note, buttons |
 | `UI/Haptics.swift` | Haptic feedback for game events |
+| `Audio/SoundEffects.swift` | Sound effects for game events. Sounds are `.caf` files in `Audio/Sounds/`; original recordings are in `SoundSources/` |
 | `UI/Palette.swift` | Colors and fonts |
 | `DontWakeTheKidsTests/` | Unit tests for levels, rules and saved progress. Run with **⌘U** |
 
